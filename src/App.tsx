@@ -1,14 +1,36 @@
 import React from 'react';
-import {css} from 'emotion';
+import {Formik, Form} from 'formik';
+import FieldTextComponent from './FieldTextComponent';
+import fields from './assets/FormFieldsData';
 
-export const App = () => {
-    return (
-        <header className={header}>
-            <h3>Good luck in developing Solid Investment Calculator UI app!</h3>
-        </header>
-    );
+interface FormValues {
+    [name: string]: string;
+}
+const handleSubmit = (values: any) => {
+    console.log(values);
 };
 
-const header = css({
-    color: '#1a1a1a',
-});
+export const App = () => {
+    const initialValues: FormValues = {};
+    const setInitialValues = fields.forEach(field => {
+        const key = field.name;
+        initialValues[key] = '';
+    });
+    return (
+        <>
+            <header>Investment Calculator</header>
+            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+                {({handleSubmit, values}) =>
+                    fields.map((field, index) => {
+                        return (
+                            <Form onSubmit={handleSubmit} key={field.name}>
+                                <FieldTextComponent name={field.name} labelText={field.labelText} value={values[index]} />
+                            </Form>
+                        );
+                    })
+                }
+            </Formik>
+            <p>Result</p>
+        </>
+    );
+};
