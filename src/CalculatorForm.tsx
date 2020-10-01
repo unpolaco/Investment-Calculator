@@ -8,14 +8,26 @@ interface FormValues {
     [name: string]: string;
 }
 export default function CalculatorForm() {
+    const annualIncome: any = [];
+
     const dropdownOptions = [
-        {key: 'Weekly', value: '7'},
-        {key: 'Monthly', value: '30'},
-        {key: 'Annually', value: 'Annually'},
+        {key: 'Weekly', value: '52'},
+        {key: 'Monthly', value: '12'},
+        {key: 'Annually', value: '1'},
     ];
 
     const handleSubmit = (values: any) => {
-        console.log(values);
+        const {startValue, additionalContribution, frequencyContribution, yearsContribution, returnRate} = values;
+        let startYearValue = startValue;
+        annualIncome.length = 0;
+        for (let i = 0; i <= yearsContribution; i++) {
+            const annualInterest = ((startYearValue + additionalContribution * frequencyContribution) * returnRate) / 100;
+            const totalContribution = additionalContribution * frequencyContribution;
+            annualIncome.push({startYearValue, annualInterest, totalContribution});
+            startYearValue = startYearValue + annualInterest + totalContribution;
+            startYearValue.toFixed(2);
+        }
+        console.log(annualIncome);
     };
 
     const initialValues: FormValues = {};
@@ -30,21 +42,16 @@ export default function CalculatorForm() {
                     <Form onSubmit={handleSubmit}>
                         {fields.map((field, index) =>
                             field.name === 'frequencyContribution' ? (
-                                <SelectField
-                                    label="Frequency Contribution"
-                                    name="selectOption"
-                                    key={field.name}
-                                    options={dropdownOptions}
-                                />
+                                <SelectField name={field.name} label={field.label} key={field.name} options={dropdownOptions} />
                             ) : (
-                                <FieldTextComponent name={field.name} labelText={field.labelText} value={values[index]} key={field.name} />
+                                <FieldTextComponent name={field.name} label={field.label} value={values[index]} key={field.name} />
                             ),
                         )}
                         <button type="submit">Calculate</button>
                     </Form>
                 )}
             </Formik>
-            <p>Result</p>
+            <p>{annualIncome[annualIncome.length - 1]?.startYearValue === 'undefined' || 0}</p>
         </>
     );
 }
