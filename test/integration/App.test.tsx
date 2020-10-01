@@ -6,6 +6,6 @@ describe('<App/>', () => {
     test('renders welcome dummy text', () => {
         render(<App />);
 
-        expect(screen.getByRole('heading')).toHaveTextContent('Good luck in developing Solid Investment Calculator UI app!');
+        expect(screen.getByRole('heading')).toHaveTextContent('Solid Investment Calculator');
     });
 });
