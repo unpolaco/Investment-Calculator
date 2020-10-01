@@ -20,15 +20,14 @@ export const App = () => {
         <>
             <header>Investment Calculator</header>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                {({handleSubmit, values}) =>
-                    fields.map((field, index) => {
-                        return (
-                            <Form onSubmit={handleSubmit} key={field.name}>
-                                <FieldTextComponent name={field.name} labelText={field.labelText} value={values[index]} />
-                            </Form>
-                        );
-                    })
-                }
+                {({handleSubmit, values}) => (
+                    <Form onSubmit={handleSubmit}>
+                        {fields.map((field, index) => (
+                            <FieldTextComponent name={field.name} labelText={field.labelText} value={values[index]} key={field.name} />
+                        ))}
+                        <button type="submit">Calculate</button>
+                    </Form>
+                )}
             </Formik>
             <p>Result</p>
         </>
