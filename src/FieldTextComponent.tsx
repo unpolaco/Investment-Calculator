@@ -3,15 +3,15 @@ import {Field} from 'formik';
 
 type FieldTextComponentProps = {
     name: string;
-    labelText: string;
+    label: string;
     value: any;
 };
 
-export default function FieldTextComponent({name, value, labelText}: FieldTextComponentProps) {
+export default function FieldTextComponent({name, value, label}: FieldTextComponentProps) {
     return (
         <fieldset>
             <Field type="number" name={name} value={value} />
-            <label htmlFor={name}>{labelText}</label>
+            <label htmlFor={name}>{label}</label>
         </fieldset>
     );
 }

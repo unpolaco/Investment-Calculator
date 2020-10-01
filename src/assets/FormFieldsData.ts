@@ -1,9 +1,9 @@
 const fields = [
-    {name: 'startValue', labelText: 'Starting Amount'},
-    {name: 'additionalContribution', labelText: 'Additional Contribution'},
-    {name: 'frequencyContribution', labelText: 'Frequency Contribution'},
-    {name: 'timeContribution', labelText: 'Time Contribution'},
-    {name: 'interestRate', labelText: 'Estimated Interest Rate'},
+    {name: 'startValue', label: 'Starting Amount'},
+    {name: 'additionalContribution', label: 'Additional Contribution'},
+    {name: 'frequencyContribution', label: 'Frequency Contribution'},
+    {name: 'yearsContribution', label: 'Years to Accumulate'},
+    {name: 'returnRate', label: 'Expected Rate of Return'},
 ];
 
 export default fields;
