@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import FieldTextComponent from './FieldTextComponent';
 import fields from './assets/FormFieldsData';
@@ -8,7 +8,8 @@ interface FormValues {
     [name: string]: string;
 }
 export default function CalculatorForm() {
-    const annualIncome: any = [];
+    const [result, setResult] = useState(0);
+    const annualIncome: any = [{startYearValue: 5}];
 
     const dropdownOptions = [
         {key: 'Weekly', value: '52'},
@@ -25,9 +26,9 @@ export default function CalculatorForm() {
             const totalContribution = additionalContribution * frequencyContribution;
             annualIncome.push({startYearValue, annualInterest, totalContribution});
             startYearValue = startYearValue + annualInterest + totalContribution;
-            startYearValue.toFixed(2);
         }
         console.log(annualIncome);
+        setResult(annualIncome[annualIncome.length - 1].startYearValue.toFixed());
     };
 
     const initialValues: FormValues = {};
@@ -51,7 +52,7 @@ export default function CalculatorForm() {
                     </Form>
                 )}
             </Formik>
-            <p>{annualIncome[annualIncome.length - 1]?.startYearValue === 'undefined' || 0}</p>
+            <p>Your total income will be {result} PLN</p>
         </>
     );
 }
