@@ -1,5 +1,5 @@
 import React from 'react';
-import CalculatorForm from './CalculatorForm';
+import CalculatorForm from './CalculatorForm/CalculatorForm';
 
 export const App = () => {
     return (
