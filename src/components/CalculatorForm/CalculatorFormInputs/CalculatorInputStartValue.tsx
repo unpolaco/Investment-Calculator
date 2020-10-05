@@ -1,11 +1,12 @@
 import React from 'react';
-import {Field} from 'formik';
+import {Field, useField} from 'formik';
 
 export const CalculatorInputStartValue: React.FC = () => {
+    const [field] = useField('startValue');
     return (
         <fieldset>
-            <Field autoFocus type="number" name="startValue" />
-            <label htmlFor="startValue">Starting Amount</label>
+            <Field autoFocus type="number" {...field} />
+            <label htmlFor={field.name}>Starting Amount</label>
         </fieldset>
     );
 };

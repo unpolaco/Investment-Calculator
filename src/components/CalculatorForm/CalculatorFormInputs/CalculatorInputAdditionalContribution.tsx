@@ -1,11 +1,12 @@
 import React from 'react';
-import {Field} from 'formik';
+import {Field, useField} from 'formik';
 
 export const CalculatorInputAdditionalContribution: React.FC = () => {
+    const [field] = useField('additionalContribution');
     return (
         <fieldset>
-            <Field type="number" name="additionalContribution" />
-            <label htmlFor="additionalContribution">Additional Contribution</label>
+            <Field type="number" {...field} />
+            <label htmlFor={field.name}>Additional Contribution</label>
         </fieldset>
     );
 };

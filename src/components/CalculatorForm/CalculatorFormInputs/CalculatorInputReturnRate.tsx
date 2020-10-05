@@ -1,11 +1,12 @@
 import React from 'react';
-import {Field} from 'formik';
+import {Field, useField} from 'formik';
 
 export const CalculatorInputReturnRate: React.FC = () => {
+    const [field] = useField('returnRate');
     return (
         <fieldset>
-            <Field type="number" name="returnRate" />
-            <label htmlFor="returnRate">Expected Rate of Return</label>
+            <Field type="number" {...field} />
+            <label htmlFor={field.name}>Expected Rate of Return</label>
         </fieldset>
     );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field} from 'formik';
+import {Field, useField} from 'formik';
 
 const dropdownOptions = [
     {key: 'Weekly', value: '52'},
@@ -8,10 +8,11 @@ const dropdownOptions = [
 ];
 
 export const CalculatorSelectFrequencyContribution: React.FC = () => {
+    const [field] = useField('frequencyContribution');
     return (
         <fieldset>
-            <label htmlFor="frequencyContribution">Frequency Contribution</label>
-            <Field as="select" id="frequencyContribution" name="frequencyContribution">
+            <label htmlFor={field.name}>Frequency Contribution</label>
+            <Field as="select" id={field.name} name={field.name}>
                 {dropdownOptions.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.key}
