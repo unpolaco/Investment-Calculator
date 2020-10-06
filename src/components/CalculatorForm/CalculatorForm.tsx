@@ -22,7 +22,6 @@ interface AnnualArray {
     cumulativeContribution: number;
     cumulativeInterest: number;
 }
-
 export default function CalculatorForm() {
     const [result, setResult] = useState(0);
     const [annualResult, setAnnualResult] = useState([
@@ -50,7 +49,6 @@ export default function CalculatorForm() {
         }
         return annualArray;
     }
-
     const handleSubmit = (values: FormValues) => {
         const resultArray: AnnualArray[] = calculateValues(values);
         const resultValue: number = +resultArray[resultArray.length - 1].startYearValue.toFixed();
@@ -58,7 +56,13 @@ export default function CalculatorForm() {
         setResult(resultValue);
     };
 
-    const initialValues: FormValues = {};
+    const initialValues: FormValues = {
+        startValue: 1000,
+        additionalContribution: 300,
+        frequencyContribution: 12,
+        yearsContribution: 15,
+        returnRate: 4,
+    };
     return (
         <>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
