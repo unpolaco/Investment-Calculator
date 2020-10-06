@@ -15,6 +15,7 @@ interface FormValues {
     returnRate?: number;
 }
 interface AnnualArray {
+    year: number;
     startYearValue: number;
     annualInterest: number;
     annualContribution: number;
@@ -25,7 +26,7 @@ interface AnnualArray {
 export default function CalculatorForm() {
     const [result, setResult] = useState(0);
     const [annualResult, setAnnualResult] = useState([
-        {startYearValue: 0, annualInterest: 0, annualContribution: 0, cumulativeInterest: 0, cumulativeContribution: 0},
+        {year: 2020, startYearValue: 0, annualInterest: 0, annualContribution: 0, cumulativeInterest: 0, cumulativeContribution: 0},
     ]);
     function calculateValues({
         startValue = 0,
@@ -35,13 +36,16 @@ export default function CalculatorForm() {
         returnRate = 0,
     }: FormValues) {
         const annualArray: AnnualArray[] = [];
+        const today = new Date();
+        let year: number = today.getFullYear();
         let startYearValue = startValue;
         for (let i = 0; i <= yearsContribution; i++) {
             const annualInterest = ((startYearValue + additionalContribution * frequencyContribution) * returnRate) / 100;
             const annualContribution = additionalContribution * frequencyContribution;
             const cumulativeInterest = i === 0 ? 0 : annualArray[i - 1].cumulativeInterest + annualInterest;
             const cumulativeContribution = i * annualContribution;
-            annualArray.push({startYearValue, annualInterest, annualContribution, cumulativeInterest, cumulativeContribution});
+            annualArray.push({year, startYearValue, annualInterest, annualContribution, cumulativeInterest, cumulativeContribution});
+            ++year;
             startYearValue = startYearValue + annualInterest + annualContribution;
         }
         return annualArray;
