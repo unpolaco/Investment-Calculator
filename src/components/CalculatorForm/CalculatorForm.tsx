@@ -22,11 +22,22 @@ interface AnnualArray {
     cumulativeContribution: number;
     cumulativeInterest: number;
 }
+interface TotalArray {
+    value: number;
+    label: string;
+}
+
 export default function CalculatorForm() {
     const [result, setResult] = useState(0);
     const [annualResult, setAnnualResult] = useState([
         {year: 2020, startYearValue: 0, annualInterest: 0, annualContribution: 0, cumulativeInterest: 0, cumulativeContribution: 0},
     ]);
+    const [totalResult, setTotalResult] = useState([
+        {value: 0, label: 'Starting Amount'},
+        {value: 0, label: 'Total Contributions'},
+        {value: 0, label: 'Total Growth'},
+    ]);
+
     function calculateValues({
         startValue = 0,
         additionalContribution = 0,
@@ -49,11 +60,24 @@ export default function CalculatorForm() {
         }
         return annualArray;
     }
+    function calculateTotals(array: AnnualArray[]) {
+        const totalStartValue = array[0].startYearValue;
+        const totalContribution = array[array.length - 1].cumulativeContribution;
+        const totalInterest = array[array.length - 1].cumulativeInterest;
+        const totalArray = [
+            {id: 'totalStartValue', value: totalStartValue, label: 'Starting Amount'},
+            {id: 'totalContribution', value: totalContribution, label: 'Total Contributions'},
+            {id: 'totalInterest', value: totalInterest, label: 'Total Growth'},
+        ];
+        return totalArray;
+    }
     const handleSubmit = (values: FormValues) => {
         const resultArray: AnnualArray[] = calculateValues(values);
+        const totalValues: TotalArray[] = calculateTotals(resultArray);
         const resultValue: number = +resultArray[resultArray.length - 1].startYearValue.toFixed();
-        setAnnualResult(resultArray);
         setResult(resultValue);
+        setAnnualResult(resultArray);
+        setTotalResult(totalValues);
     };
 
     const initialValues: FormValues = {
@@ -78,7 +102,7 @@ export default function CalculatorForm() {
                 )}
             </Formik>
             <p>Your total income will be {result} PLN</p>
-            <ResultCard data={annualResult} />
+            <ResultCard chartBarData={annualResult} chartPieData={totalResult} />
         </>
     );
 }
