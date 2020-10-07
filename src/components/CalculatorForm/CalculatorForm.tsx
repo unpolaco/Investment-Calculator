@@ -16,6 +16,7 @@ interface FormValues {
 }
 interface AnnualArray {
     year: number;
+    startValue: number;
     startYearValue: number;
     annualInterest: number;
     annualContribution: number;
@@ -54,7 +55,15 @@ export default function CalculatorForm() {
             const annualContribution = additionalContribution * frequencyContribution;
             const cumulativeInterest = i === 0 ? 0 : annualArray[i - 1].cumulativeInterest + annualInterest;
             const cumulativeContribution = i * annualContribution;
-            annualArray.push({year, startYearValue, annualInterest, annualContribution, cumulativeInterest, cumulativeContribution});
+            annualArray.push({
+                year,
+                startValue,
+                startYearValue,
+                annualInterest,
+                annualContribution,
+                cumulativeInterest,
+                cumulativeContribution,
+            });
             ++year;
             startYearValue = startYearValue + annualInterest + annualContribution;
         }
@@ -65,9 +74,9 @@ export default function CalculatorForm() {
         const totalContribution = array[array.length - 1].cumulativeContribution;
         const totalInterest = array[array.length - 1].cumulativeInterest;
         const totalArray = [
-            {id: 'totalStartValue', value: totalStartValue, label: 'Starting Amount'},
-            {id: 'totalContribution', value: totalContribution, label: 'Total Contributions'},
-            {id: 'totalInterest', value: totalInterest, label: 'Total Growth'},
+            {id: 'Starting Amount', value: totalStartValue, label: 'Starting Amount'},
+            {id: 'Total Contributions', value: totalContribution, label: 'Total Contributions'},
+            {id: 'Total Growth', value: totalInterest, label: 'Total Growth'},
         ];
         return totalArray;
     }
