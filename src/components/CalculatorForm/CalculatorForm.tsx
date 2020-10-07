@@ -5,6 +5,7 @@ import {CalculatorInputYearsContribution} from './CalculatorFormInputs/Calculato
 import {CalculatorSelectFrequencyContribution} from './CalculatorFormInputs/CalculatorSelectFrequencyContribution';
 import {CalculatorInputReturnRate} from './CalculatorFormInputs/CalculatorInputReturnRate';
 import {CalculatorInputAdditionalContribution} from './CalculatorFormInputs/CalculatorInputAdditionalContribution';
+import {ResultCard} from '../ResultsCard/ResultCard';
 
 interface FormValues {
     startValue?: number;
@@ -13,14 +14,30 @@ interface FormValues {
     yearsContribution?: number;
     returnRate?: number;
 }
-interface AnnualIncome {
+interface AnnualArray {
+    year: number;
+    startValue: number;
     startYearValue: number;
     annualInterest: number;
-    totalContribution: number;
+    annualContribution: number;
+    cumulativeContribution: number;
+    cumulativeInterest: number;
+}
+interface TotalArray {
+    value: number;
+    label: string;
 }
 
-export default function CalculatorForm() {
+export const CalculatorForm = () => {
     const [result, setResult] = useState(0);
+    const [annualResult, setAnnualResult] = useState([
+        {year: 2020, startYearValue: 0, annualInterest: 0, annualContribution: 0, cumulativeInterest: 0, cumulativeContribution: 0},
+    ]);
+    const [totalResult, setTotalResult] = useState([
+        {value: 0, label: 'Starting Amount'},
+        {value: 0, label: 'Total Contributions'},
+        {value: 0, label: 'Total Growth'},
+    ]);
 
     function calculateValues({
         startValue = 0,
@@ -29,24 +46,56 @@ export default function CalculatorForm() {
         yearsContribution = 0,
         returnRate = 0,
     }: FormValues) {
-        const annualIncome: AnnualIncome[] = [];
+        const annualArray: AnnualArray[] = [];
+        const today = new Date();
+        let year: number = today.getFullYear();
         let startYearValue = startValue;
         for (let i = 0; i <= yearsContribution; i++) {
             const annualInterest = ((startYearValue + additionalContribution * frequencyContribution) * returnRate) / 100;
-            const totalContribution = additionalContribution * frequencyContribution;
-            annualIncome.push({startYearValue, annualInterest, totalContribution});
-            startYearValue = startYearValue + annualInterest + totalContribution;
+            const annualContribution = additionalContribution * frequencyContribution;
+            const cumulativeInterest = i === 0 ? 0 : annualArray[i - 1].cumulativeInterest + annualInterest;
+            const cumulativeContribution = i * annualContribution;
+            annualArray.push({
+                year,
+                startValue,
+                startYearValue,
+                annualInterest,
+                annualContribution,
+                cumulativeInterest,
+                cumulativeContribution,
+            });
+            ++year;
+            startYearValue = startYearValue + annualInterest + annualContribution;
         }
-        return annualIncome;
+        return annualArray;
     }
-
+    function calculateTotals(array: AnnualArray[]) {
+        const totalStartValue = array[0].startYearValue;
+        const totalContribution = array[array.length - 1].cumulativeContribution;
+        const totalInterest = array[array.length - 1].cumulativeInterest;
+        const totalArray = [
+            {id: 'Starting Amount', value: totalStartValue, label: 'Starting Amount'},
+            {id: 'Total Contributions', value: totalContribution, label: 'Total Contributions'},
+            {id: 'Total Growth', value: totalInterest, label: 'Total Growth'},
+        ];
+        return totalArray;
+    }
     const handleSubmit = (values: FormValues) => {
-        const resultArray: AnnualIncome[] = calculateValues(values);
+        const resultArray: AnnualArray[] = calculateValues(values);
+        const totalValues: TotalArray[] = calculateTotals(resultArray);
         const resultValue: number = +resultArray[resultArray.length - 1].startYearValue.toFixed();
         setResult(resultValue);
+        setAnnualResult(resultArray);
+        setTotalResult(totalValues);
     };
 
-    const initialValues: FormValues = {};
+    const initialValues: FormValues = {
+        startValue: 1000,
+        additionalContribution: 300,
+        frequencyContribution: 12,
+        yearsContribution: 15,
+        returnRate: 4,
+    };
     return (
         <>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -62,6 +111,7 @@ export default function CalculatorForm() {
                 )}
             </Formik>
             <p>Your total income will be {result} PLN</p>
+            <ResultCard chartBarData={annualResult} chartPieData={totalResult} />
         </>
     );
-}
+};
