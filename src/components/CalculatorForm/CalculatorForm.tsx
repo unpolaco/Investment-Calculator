@@ -5,7 +5,7 @@ import {CalculatorInputYearsContribution} from './CalculatorFormInputs/Calculato
 import {CalculatorSelectFrequencyContribution} from './CalculatorFormInputs/CalculatorSelectFrequencyContribution';
 import {CalculatorInputReturnRate} from './CalculatorFormInputs/CalculatorInputReturnRate';
 import {CalculatorInputAdditionalContribution} from './CalculatorFormInputs/CalculatorInputAdditionalContribution';
-import ResultCard from '../ResultsCard/ResultCard';
+import {ResultCard} from '../ResultsCard/ResultCard';
 
 interface FormValues {
     startValue?: number;
@@ -28,7 +28,7 @@ interface TotalArray {
     label: string;
 }
 
-export default function CalculatorForm() {
+export const CalculatorForm = () => {
     const [result, setResult] = useState(0);
     const [annualResult, setAnnualResult] = useState([
         {year: 2020, startYearValue: 0, annualInterest: 0, annualContribution: 0, cumulativeInterest: 0, cumulativeContribution: 0},
@@ -114,4 +114,4 @@ export default function CalculatorForm() {
             <ResultCard chartBarData={annualResult} chartPieData={totalResult} />
         </>
     );
-}
+};
