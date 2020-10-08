@@ -8,6 +8,6 @@ export const resetStyles = `
 }
 
 body {
-  background-color: #ecf0f1;
+	background-color: #ecf0f1;
 }
 `;

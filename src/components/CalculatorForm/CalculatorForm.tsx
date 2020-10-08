@@ -6,6 +6,7 @@ import {CalculatorSelectFrequencyContribution} from './CalculatorFormInputs/Calc
 import {CalculatorInputReturnRate} from './CalculatorFormInputs/CalculatorInputReturnRate';
 import {CalculatorInputAdditionalContribution} from './CalculatorFormInputs/CalculatorInputAdditionalContribution';
 import {ResultCard} from '../ResultsCard/ResultCard';
+import {InputsCard} from './CalculatorForm.styles';
 
 interface FormValues {
     startValue?: number;
@@ -88,6 +89,7 @@ export const CalculatorForm = () => {
         setAnnualResult(resultArray);
         setTotalResult(totalValues);
     };
+    const handleSave = () => {};
 
     const initialValues: FormValues = {
         startValue: 1000,
@@ -98,19 +100,24 @@ export const CalculatorForm = () => {
     };
     return (
         <>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                {({handleSubmit}) => (
-                    <Form onSubmit={handleSubmit}>
-                        <CalculatorInputStartValue />
-                        <CalculatorInputYearsContribution />
-                        <CalculatorInputAdditionalContribution />
-                        <CalculatorSelectFrequencyContribution />
-                        <CalculatorInputReturnRate />
-                        <button type="submit">Calculate</button>
-                    </Form>
-                )}
-            </Formik>
-            <p>Your total income will be {result} PLN</p>
+            <InputsCard>
+                <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+                    {({handleSubmit}) => (
+                        <Form onSubmit={handleSubmit}>
+                            <CalculatorInputStartValue />
+                            <CalculatorInputYearsContribution />
+                            <CalculatorInputAdditionalContribution />
+                            <CalculatorSelectFrequencyContribution />
+                            <CalculatorInputReturnRate />
+                            <button type="submit">Calculate</button>
+                            <button type="submit" onClick={handleSave}>
+                                Save
+                            </button>
+                        </Form>
+                    )}
+                </Formik>
+                <p>Your total income will be {result} PLN</p>
+            </InputsCard>
             <ResultCard chartBarData={annualResult} chartPieData={totalResult} />
         </>
     );
