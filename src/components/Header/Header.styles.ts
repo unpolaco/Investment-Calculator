@@ -13,5 +13,6 @@ export const HeaderContainer = styled.header`
 export const Title = styled.h1`
     margin: auto;
     font-size: 30px;
+    font-weight: 600;
     color: grey;
 `;

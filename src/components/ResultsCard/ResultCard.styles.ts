@@ -20,5 +20,5 @@ export const TextResult = styled.p`
 export const TextBold = styled.span`
     font-size: 16px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
 `;
