@@ -23,6 +23,7 @@ interface AnnualArray {
     annualContribution: number;
     cumulativeContribution: number;
     cumulativeInterest: number;
+    yearLabel?: string;
 }
 interface TotalArray {
     value: number;
@@ -56,6 +57,7 @@ export const CalculatorForm = () => {
             const annualContribution = additionalContribution * frequencyContribution;
             const cumulativeInterest = i === 0 ? 0 : annualArray[i - 1].cumulativeInterest + annualInterest;
             const cumulativeContribution = i * annualContribution;
+            const yearLabel = year.toString();
             annualArray.push({
                 year,
                 startValue,
@@ -64,6 +66,7 @@ export const CalculatorForm = () => {
                 annualContribution,
                 cumulativeInterest,
                 cumulativeContribution,
+                yearLabel,
             });
             ++year;
             startYearValue = startYearValue + annualInterest + annualContribution;
