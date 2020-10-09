@@ -1,12 +1,13 @@
 import React from 'react';
 import {Field, useField} from 'formik';
+import {Input, Fieldset, Label} from './Inputs.styles';
 
 export const CalculatorInputYearsContribution: React.FC = () => {
     const [field] = useField('yearsContribution');
     return (
-        <fieldset>
-            <Field type="number" {...field} />
-            <label htmlFor={field.name}>Years to Accumulate</label>
-        </fieldset>
+        <Fieldset>
+            <Label htmlFor={field.name}>Years to Accumulate</Label>
+            <Field type="number" as={Input} {...field} />
+        </Fieldset>
     );
 };
