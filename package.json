@@ -3,6 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@emotion/core": "^10.0.35",
+        "@emotion/styled": "^10.0.27",
         "@nivo/bar": "^0.62.0",
         "@nivo/pie": "^0.62.0",
         "@testing-library/jest-dom": "^5.11.0",
@@ -13,7 +15,7 @@
         "@types/react": "^16.9.0",
         "@types/react-dom": "^16.9.0",
         "axios": "^0.19.0",
-        "emotion": "^10.0.0",
+        "emotion": "^10.0.27",
         "eslint-plugin-jest-dom": "^3.1.1",
         "eslint-plugin-testing-library": "^3.3.1",
         "formik": "^2.1.6",
@@ -24,6 +26,7 @@
         "pretty-quick": "^1.0.3",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
+        "react-query": "^2.23.1",
         "react-scripts": "3.4.0",
         "typescript": "~3.8.3"
     },

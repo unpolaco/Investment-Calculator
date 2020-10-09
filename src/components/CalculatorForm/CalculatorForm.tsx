@@ -6,6 +6,7 @@ import {CalculatorSelectFrequencyContribution} from './CalculatorFormInputs/Calc
 import {CalculatorInputReturnRate} from './CalculatorFormInputs/CalculatorInputReturnRate';
 import {CalculatorInputAdditionalContribution} from './CalculatorFormInputs/CalculatorInputAdditionalContribution';
 import {ResultCard} from '../ResultsCard/ResultCard';
+import {InputsCard, FormContainer, Button} from './CalculatorForm.styles';
 
 interface FormValues {
     startValue?: number;
@@ -98,20 +99,23 @@ export const CalculatorForm = () => {
     };
     return (
         <>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                {({handleSubmit}) => (
-                    <Form onSubmit={handleSubmit}>
-                        <CalculatorInputStartValue />
-                        <CalculatorInputYearsContribution />
-                        <CalculatorInputAdditionalContribution />
-                        <CalculatorSelectFrequencyContribution />
-                        <CalculatorInputReturnRate />
-                        <button type="submit">Calculate</button>
-                    </Form>
-                )}
-            </Formik>
-            <p>Your total income will be {result} PLN</p>
-            <ResultCard chartBarData={annualResult} chartPieData={totalResult} />
+            <InputsCard>
+                <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+                    {({handleSubmit}) => (
+                        <Form onSubmit={handleSubmit}>
+                            <FormContainer>
+                                <CalculatorInputStartValue />
+                                <CalculatorInputYearsContribution />
+                                <CalculatorInputAdditionalContribution />
+                                <CalculatorSelectFrequencyContribution />
+                                <CalculatorInputReturnRate />
+                                <Button type="submit">Calculate</Button>
+                            </FormContainer>
+                        </Form>
+                    )}
+                </Formik>
+            </InputsCard>
+            <ResultCard result={result} chartBarData={annualResult} chartPieData={totalResult} />
         </>
     );
 };
