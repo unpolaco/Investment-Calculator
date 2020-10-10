@@ -30,6 +30,9 @@ export const CalculatorForm = () => {
         {id: 'Total Contributions', value: 34, label: 'Total Contributions'},
         {id: 'Total Growth', value: 50, label: 'Total Growth'},
     ]);
+    useEffect(() => {
+        handleSubmit(initialValues);
+    }, []);
     const postUrl = 'https://user-service.kale-team.sit.fintechchallenge.pl/api/calculations';
     const bodyContent = inputValues;
     const postOptions = {
