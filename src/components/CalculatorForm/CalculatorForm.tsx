@@ -31,6 +31,7 @@ interface TotalArray {
 }
 
 export const CalculatorForm = () => {
+    const [inputValues, setInputValues] = useState({});
     const [result, setResult] = useState(0);
     const [annualResult, setAnnualResult] = useState([
         {year: 2020, startYearValue: 0, annualInterest: 0, annualContribution: 0, cumulativeInterest: 0, cumulativeContribution: 0},
@@ -40,6 +41,19 @@ export const CalculatorForm = () => {
         {value: 0, label: 'Total Contributions'},
         {value: 0, label: 'Total Growth'},
     ]);
+    const postUrl = 'https://user-service.kale-team.sit.fintechchallenge.pl/api/calculations';
+    const bodyContent = {
+        startValue: 0,
+        additionalContribution: 0,
+        frequencyContribution: 0,
+        yearsContribution: 0,
+        returnRate: 0,
+    };
+    const postOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(bodyContent),
+    };
 
     function calculateValues({
         startValue = 0,
@@ -88,9 +102,27 @@ export const CalculatorForm = () => {
         const resultArray: AnnualArray[] = calculateValues(values);
         const totalValues: TotalArray[] = calculateTotals(resultArray);
         const resultValue: number = +resultArray[resultArray.length - 1].startYearValue.toFixed();
+        setInputValues(values);
         setResult(resultValue);
         setAnnualResult(resultArray);
         setTotalResult(totalValues);
+    };
+
+    const handleResponse = (response: any) => {
+        if (response.status === 404) {
+            return Promise.reject(response);
+        }
+        return response.json();
+    };
+
+    const handleSave = () => {
+        handleSubmit(inputValues);
+        fetch(postUrl, postOptions)
+            .then(handleResponse)
+            .then(response => {
+                return response;
+            })
+            .catch(error => console.error(error));
     };
 
     const initialValues: FormValues = {
@@ -113,6 +145,9 @@ export const CalculatorForm = () => {
                                 <CalculatorSelectFrequencyContribution />
                                 <CalculatorInputReturnRate />
                                 <Button type="submit">Calculate</Button>
+                                <Button type="submit" onClick={() => handleSave()}>
+                                    Save
+                                </Button>
                             </FormContainer>
                         </Form>
                     )}
