@@ -7,28 +7,8 @@ import {CalculatorInputReturnRate} from './CalculatorFormInputs/CalculatorInputR
 import {CalculatorInputAdditionalContribution} from './CalculatorFormInputs/CalculatorInputAdditionalContribution';
 import {ResultCard} from '../ResultsCard/ResultCard';
 import {InputsCard, FormContainer, Button} from './CalculatorForm.styles';
-
-interface FormValues {
-    startValue?: number;
-    additionalContribution?: number;
-    frequencyContribution?: number;
-    yearsContribution?: number;
-    returnRate?: number;
-}
-interface AnnualArray {
-    year: number;
-    startValue: number;
-    startYearValue: number;
-    annualInterest: number;
-    annualContribution: number;
-    cumulativeContribution: number;
-    cumulativeInterest: number;
-    yearLabel?: string;
-}
-interface TotalArray {
-    value: number;
-    label: string;
-}
+import {FormValues, AnnualArray, TotalArray} from './CalculatorFrom.types';
+import {initialValues} from './CalculatorForm.constants';
 
 export const CalculatorForm = () => {
     const [inputValues, setInputValues] = useState({});
@@ -125,13 +105,6 @@ export const CalculatorForm = () => {
             .catch(error => console.error(error));
     };
 
-    const initialValues: FormValues = {
-        startValue: 1000,
-        additionalContribution: 300,
-        frequencyContribution: 12,
-        yearsContribution: 15,
-        returnRate: 4,
-    };
     return (
         <>
             <InputsCard>
