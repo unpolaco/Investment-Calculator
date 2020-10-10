@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, useField} from 'formik';
-import {Input, Fieldset, Label} from './Inputs.styles';
+import {Input, Fieldset, Label} from './CalculatorFormInputs.styles';
 
 export const CalculatorInputReturnRate: React.FC = () => {
     const [field] = useField('returnRate');

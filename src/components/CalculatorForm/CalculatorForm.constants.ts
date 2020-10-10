@@ -1,9 +1,9 @@
 import {FormValues} from './CalculatorFrom.types';
 
 export const initialValues: FormValues = {
-    startValue: 1000,
+    startValue: 10000,
     additionalContribution: 300,
     frequencyContribution: 12,
-    yearsContribution: 15,
+    yearsContribution: 10,
     returnRate: 4,
 };

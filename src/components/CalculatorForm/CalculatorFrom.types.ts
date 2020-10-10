@@ -13,9 +13,11 @@ export interface AnnualArray {
     annualContribution: number;
     cumulativeContribution: number;
     cumulativeInterest: number;
-    yearLabel?: string;
+    id: string;
+    yearLabel: string;
 }
 export interface TotalArray {
     value: number;
     label: string;
+    id: string;
 }
