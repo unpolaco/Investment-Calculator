@@ -20,3 +20,9 @@ export const Label = styled.label`
     text-align: left;
     margin: 5px 0;
 `;
+export const Error = styled.p`
+    font-size: 12px;
+    color: red;
+    text-align: left;
+    margin: 5px 0;
+`;

@@ -8,7 +8,7 @@ import {CalculatorInputAdditionalContribution} from './CalculatorFormInputs/Calc
 import {ResultCard} from '../ResultsCard/ResultCard';
 import {InputsCard, FormContainer, Button} from './CalculatorForm.styles';
 import {FormValues, AnnualArray, TotalArray} from './CalculatorFrom.types';
-import {initialValues} from './CalculatorForm.constants';
+import {initialValues, validate} from './CalculatorForm.constants';
 
 export const CalculatorForm = () => {
     const [inputValues, setInputValues] = useState({});
@@ -114,7 +114,7 @@ export const CalculatorForm = () => {
     return (
         <>
             <InputsCard>
-                <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+                <Formik initialValues={initialValues} validate={validate} onSubmit={handleSubmit}>
                     {({handleSubmit}) => (
                         <Form onSubmit={handleSubmit}>
                             <FormContainer>
