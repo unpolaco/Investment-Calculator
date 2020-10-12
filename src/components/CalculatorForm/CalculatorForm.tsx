@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import {CalculatorInputStartValue} from './CalculatorFormInputs/CalculatorFormInputStartValue';
 import {CalculatorInputYearsContribution} from './CalculatorFormInputs/CalculatorFormInputYearsContribution';
@@ -30,10 +30,8 @@ export const CalculatorForm = () => {
         {id: 'Total Contributions', value: 34, label: 'Total Contributions'},
         {id: 'Total Growth', value: 50, label: 'Total Growth'},
     ]);
-    useEffect(() => {
-        handleSubmit(initialValues);
-    }, []);
-    const postUrl = 'https://user-service.kale-team.sit.fintechchallenge.pl/api/calculations';
+
+    const postUrl = '/api/calculations';
     const bodyContent = inputValues;
     const postOptions = {
         method: 'POST',
