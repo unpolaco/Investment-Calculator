@@ -24,7 +24,7 @@ export const validate = (values: any) => {
     } else if (values.yearsContribution < 0) {
         errors.yearsContribution = 'Must be a positive number';
     } else if (values.yearsContribution > 100) {
-        errors.yearsContribution = 'You are trying look too far ahead!';
+        errors.yearsContribution = 'You are trying to look too far ahead!';
     }
 
     if (!values.returnRate) {
