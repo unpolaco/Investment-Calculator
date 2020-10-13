@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const FieldContainer = styled.div`
+export const FieldContainerCurrency = styled.div`
     display: inline-block;
     position: relative;
     ::after {
@@ -8,6 +8,16 @@ export const FieldContainer = styled.div`
         top: 7px;
         right: 15px;
         content: 'zł';
+    }
+`;
+export const FieldContainerPercent = styled.div`
+    display: inline-block;
+    position: relative;
+    ::after {
+        position: absolute;
+        top: 7px;
+        right: 15px;
+        content: '%';
     }
 `;
 
