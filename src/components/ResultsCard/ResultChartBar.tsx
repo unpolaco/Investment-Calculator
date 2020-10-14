@@ -17,8 +17,6 @@ interface AnnualResultProps {
 }
 
 export const ChartBar: React.FC<any> = ({data}) => {
-    console.log(data);
-
     const chartData = data.map((el: ChartData) => {
         return {
             'Start Value': el.startValue,
