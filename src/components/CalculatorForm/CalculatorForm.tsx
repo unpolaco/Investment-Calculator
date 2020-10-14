@@ -9,32 +9,22 @@ import {ResultCard} from '../ResultsCard/ResultCard';
 import {InputsCard, FormContainer, Button} from './CalculatorForm.styles';
 import {FormValues} from './CalculatorFrom.types';
 import {initialValues, validate} from './CalculatorForm.constants';
+import {useSaveCalculatorValues} from '../../hooks/useSaveCalculatorValues';
+import {Loader} from '../Loader/Loader';
 
 export const CalculatorForm = () => {
     const [inputValues, setInputValues] = useState(initialValues);
-    const postUrl = '/api/calculations';
-    const bodyContent = inputValues;
-    const postOptions = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(bodyContent),
+    const {isFetching, isError, responseLink, saveValues} = useSaveCalculatorValues();
+
+    const handleSubmit = (values: FormValues) => {
+        setInputValues(values);
     };
 
-    const handleSubmit = (values: FormValues) => setInputValues(values);
-
-    const handleResponse = (response: any) => {
-        if (response.status === 404) {
-            return Promise.reject(response);
-        }
-        return response.json();
-    };
     const handleSave = (values: FormValues) => {
-        handleSubmit(values);
-        fetch(postUrl, postOptions)
-            .then(handleResponse)
-            .then(response => response)
-            .catch(error => console.error(error));
+        setInputValues(values);
+        saveValues(values);
     };
+
     return (
         <>
             <InputsCard>
@@ -51,6 +41,9 @@ export const CalculatorForm = () => {
                                 <Button type="submit" onClick={() => handleSave(values)}>
                                     Save
                                 </Button>
+                                {isError ? <div>Error occured</div> : null}
+                                {isFetching ? <Loader /> : null}
+                                {responseLink?.status === 200 ? <div>Your data was saved here:</div> : null}
                             </FormContainer>
                         </Form>
                     )}
