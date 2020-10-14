@@ -30,7 +30,7 @@ export const ChartBar: React.FC<any> = ({data}) => {
             data={chartData}
             keys={['Start Value', 'Cumulative Contribution', 'Cumulative Interest']}
             indexBy="Year Label"
-            margin={{top: 50, right: 130, bottom: 50, left: 60}}
+            margin={{top: 50, right: 40, bottom: 50, left: 60}}
             padding={0.2}
             colors={{scheme: 'nivo'}}
             axisTop={null}
@@ -49,6 +49,11 @@ export const ChartBar: React.FC<any> = ({data}) => {
                 legendPosition: 'middle',
                 legendOffset: -40,
             }}
+            tooltipFormat={value =>
+                `${Number(value).toLocaleString('pl-PL', {
+                    maximumFractionDigits: 0,
+                })} PLN`
+            }
             enableLabel={false}
             animate={true}
             motionStiffness={90}

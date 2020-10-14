@@ -2,6 +2,13 @@ import React from 'react';
 import {ResponsivePie} from '@nivo/pie';
 
 export const ChartPie = ({data}: any) => {
+    const pieData = (data: any) => {
+        for (let i = 0; i < data.length; i++) {
+            data[i].value = +data[i].value.toFixed();
+        }
+        return data;
+    };
+    pieData(data);
     return (
         <ResponsivePie
             data={data}
@@ -13,6 +20,11 @@ export const ChartPie = ({data}: any) => {
             borderWidth={1}
             borderColor={{from: 'color', modifiers: [['darker', 0.2]]}}
             radialLabelsSkipAngle={10}
+            tooltipFormat={value =>
+                `${Number(value).toLocaleString('pl-PL', {
+                    maximumFractionDigits: 0,
+                })} PLN`
+            }
             radialLabelsTextXOffset={8}
             radialLabelsTextColor="#333333"
             radialLabelsLinkOffset={0}
