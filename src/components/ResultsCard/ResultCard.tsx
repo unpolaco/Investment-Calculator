@@ -9,7 +9,6 @@ export const ResultCard = ({inputValues}: any) => {
     let annualResult = [];
     let totalResult = [];
     const formattedResult = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(result);
-
     function getTotals(resultArray: AnnualArray[]) {
         const totalStartValue = resultArray[0].startYearValue;
         const totalContribution = resultArray[resultArray.length - 1].cumulativeContribution;
@@ -59,6 +58,7 @@ export const ResultCard = ({inputValues}: any) => {
     const resultArray: AnnualArray[] = calculateValues(inputValues);
     const totalValues: TotalArray[] = getTotals(resultArray);
     const resultValue: number = +resultArray[resultArray.length - 1].startYearValue.toFixed();
+    const finishYear: number = resultArray[resultArray.length - 1].year;
     annualResult = resultArray;
     totalResult = totalValues;
 
@@ -69,7 +69,7 @@ export const ResultCard = ({inputValues}: any) => {
     return (
         <ResultCardContainer>
             <TextResult>
-                Your total income will be <TextBold>{formattedResult}</TextBold>
+                Your total income in <TextBold>{finishYear}</TextBold> will be <TextBold>{formattedResult}</TextBold>
             </TextResult>
             <ChartBar data={annualResult} />
             <ChartPie data={totalResult} />
