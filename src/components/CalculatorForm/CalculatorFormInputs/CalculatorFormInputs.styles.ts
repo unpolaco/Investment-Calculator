@@ -54,10 +54,11 @@ export const Select = styled.select`
     text-overflow: '';
 `;
 export const Fieldset = styled.fieldset`
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 5px 20px;
+    margin: 8px 20px;
 `;
 export const Label = styled.label`
     font-size: 12px;
@@ -66,6 +67,8 @@ export const Label = styled.label`
     margin: 5px 0;
 `;
 export const Error = styled.p`
+    position: absolute;
+    bottom: -20px;
     font-size: 12px;
     color: red;
     text-align: left;
