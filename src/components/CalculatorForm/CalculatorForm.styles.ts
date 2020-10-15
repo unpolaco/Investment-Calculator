@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
 `;
 export const InputsCard = styled.aside`
     width: 25%;
-    height: 80%;
+    height: 95%;
     margin: 5px;
     padding: 10px;
     background-color: white;
@@ -16,7 +16,7 @@ export const InputsCard = styled.aside`
 `;
 export const Button = styled.button`
     height: 80%;
-    margin: 5px;
+    margin: 15px;
     padding: 10px;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.3);
