@@ -9,20 +9,12 @@ import {ResultCard} from '../ResultsCard/ResultCard';
 import {InputsCard, FormContainer, Button} from './CalculatorForm.styles';
 import {FormValues} from './CalculatorFrom.types';
 import {initialValues, validate} from './CalculatorForm.constants';
-import {useSaveCalculatorValues} from '../../hooks/useSaveCalculatorValues';
-import {Loader} from '../Loader/Loader';
 
 export const CalculatorForm = () => {
     const [inputValues, setInputValues] = useState(initialValues);
-    const {isFetching, isError, responseLink, saveValues} = useSaveCalculatorValues();
 
     const handleSubmit = (values: FormValues) => {
         setInputValues(values);
-    };
-
-    const handleSave = (values: FormValues) => {
-        setInputValues(values);
-        saveValues(values);
     };
 
     return (
@@ -38,12 +30,6 @@ export const CalculatorForm = () => {
                                 <CalculatorSelectFrequencyContribution />
                                 <CalculatorInputReturnRate />
                                 <Button type="submit">Calculate</Button>
-                                <Button type="submit" onClick={() => handleSave(values)}>
-                                    Save
-                                </Button>
-                                {isError ? <div>Error occured</div> : null}
-                                {isFetching ? <Loader /> : null}
-                                {responseLink?.status === 200 ? <div>Your data was saved here:</div> : null}
                             </FormContainer>
                         </Form>
                     )}
