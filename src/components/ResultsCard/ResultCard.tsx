@@ -1,14 +1,14 @@
-import React, {useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ChartBar} from './ResultChartBar';
 import {ChartPie} from './ResultChartPie';
 import {ResultCardContainer, TextResult, TextBold} from './ResultCard.styles';
 import {FormValues, AnnualArray, TotalArray} from '../CalculatorForm/CalculatorFrom.types';
 
 export const ResultCard = ({inputValues}: any) => {
-    const result = useRef(0);
+    const [result, setResult] = useState(0);
     let annualResult = [];
     let totalResult = [];
-    const formattedResult = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(result.current);
+    const formattedResult = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(result);
 
     function getTotals(resultArray: AnnualArray[]) {
         const totalStartValue = resultArray[0].startYearValue;
@@ -59,9 +59,12 @@ export const ResultCard = ({inputValues}: any) => {
     const resultArray: AnnualArray[] = calculateValues(inputValues);
     const totalValues: TotalArray[] = getTotals(resultArray);
     const resultValue: number = +resultArray[resultArray.length - 1].startYearValue.toFixed();
-    result.current = resultValue;
     annualResult = resultArray;
     totalResult = totalValues;
+
+    useEffect(() => {
+        setResult(resultValue);
+    }, [resultValue]);
 
     return (
         <ResultCardContainer>
