@@ -24,7 +24,7 @@ export const Input = styled.input`
     border-color: transparent;
     padding: 5px 35px;
     height: 35px;
-    width: 150px;
+    width: 190px;
     flex: 1;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
@@ -43,7 +43,7 @@ export const Select = styled.select`
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     padding: 3px 15px;
-    width: 150px;
+    width: 190px;
     height: 35px;
     flex: 1;
     cursor: pointer;
