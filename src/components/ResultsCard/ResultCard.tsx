@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {ChartBar} from './ResultChartBar';
 import {ChartPie} from './ResultChartPie';
 import {ResultCardContainer, TextResult, TextBold} from './ResultCard.styles';
 import {FormValues, AnnualArray, TotalArray} from '../CalculatorForm/CalculatorFrom.types';
 
 export const ResultCard = ({inputValues}: any) => {
-    const [result, setResult] = useState(0);
     let annualResult = [];
     let totalResult = [];
-    const formattedResult = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(result);
+
     function getTotals(resultArray: AnnualArray[]) {
         const totalStartValue = resultArray[0].startYearValue;
         const totalContribution = resultArray[resultArray.length - 1].cumulativeContribution;
@@ -61,18 +60,15 @@ export const ResultCard = ({inputValues}: any) => {
     const finishYear: number = resultArray[resultArray.length - 1].year;
     annualResult = resultArray;
     totalResult = totalValues;
-
-    useEffect(() => {
-        setResult(resultValue);
-    }, [resultValue]);
+    const formattedResult = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(resultValue);
 
     return (
         <ResultCardContainer>
             <TextResult>
                 Your total income in <TextBold>{finishYear}</TextBold> will be <TextBold>{formattedResult}</TextBold>
             </TextResult>
-            <ChartBar data={annualResult} />
-            <ChartPie data={totalResult} />
+            <ChartBar chartData={annualResult} />
+            <ChartPie pieData={totalResult} />
         </ResultCardContainer>
     );
 };
