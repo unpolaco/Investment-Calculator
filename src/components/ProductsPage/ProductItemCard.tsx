@@ -1,15 +1,29 @@
 import React from 'react';
-import {ProductItemContainer} from './ProductItemCard.styles';
+import {ProductItemContainer, ItemBoxTextWrapper, ItemTextName, TextBig} from './ProductItemCard.styles';
 
 export const ProductItemCard = () => {
     return (
         <>
             <ProductItemContainer>
-                <div>Name</div>
-                <div>Category</div>
-                <div>rating 1/10</div>
-                <div>risk 2/10</div>
-                <div>av return 12%</div>
+                <ItemTextName>Investor Bezpiecznego Wzrostu</ItemTextName>
+                <ItemBoxTextWrapper>
+                    <div>Category</div>
+                </ItemBoxTextWrapper>
+                <ItemBoxTextWrapper>
+                    <div>
+                        rating <TextBig>1/10</TextBig>
+                    </div>
+                </ItemBoxTextWrapper>
+                <ItemBoxTextWrapper>
+                    <div>
+                        risk <TextBig>5/10</TextBig>
+                    </div>
+                </ItemBoxTextWrapper>
+                <ItemBoxTextWrapper>
+                    <div>
+                        av return <TextBig>12%</TextBig>
+                    </div>
+                </ItemBoxTextWrapper>
             </ProductItemContainer>
         </>
     );
