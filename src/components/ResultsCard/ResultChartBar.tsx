@@ -1,34 +1,12 @@
 import React from 'react';
 import {ResponsiveBar} from '@nivo/bar';
+import {chartDataConvert} from './ResultCard.helpers';
 
-interface ChartData {
-    [key: string]: string;
-}
-interface AnnualResultProps {
-    annualContribution?: number;
-    annualInterest?: number;
-    cumulativeContribution?: number;
-    cumulativeInterest?: number;
-    id?: string;
-    startValue?: number;
-    startYearValue?: number;
-    year?: number;
-    yearLabel?: string;
-}
-
-export const ChartBar: React.FC<any> = ({data}) => {
-    const chartData = data.map((el: ChartData) => {
-        return {
-            'Start Value': el.startValue,
-            'Cumulative Contribution': el.cumulativeContribution,
-            'Cumulative Interest': el.cumulativeInterest,
-            'Year Label': el.yearLabel,
-        };
-    });
+export const ChartBar: React.FC<any> = ({chartData}) => {
     return (
         <ResponsiveBar
-            data={chartData}
-            keys={['Start Value', 'Cumulative Contribution', 'Cumulative Interest']}
+            data={chartDataConvert(chartData)}
+            keys={['Start Value', 'Cumulative Contribution', 'Annual Interest']}
             indexBy="Year Label"
             margin={{top: 50, right: 40, bottom: 50, left: 60}}
             padding={0.2}

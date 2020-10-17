@@ -1,17 +1,11 @@
 import React from 'react';
 import {ResponsivePie} from '@nivo/pie';
+import {pieDataConvert} from './ResultCard.helpers';
 
-export const ChartPie = ({data}: any) => {
-    const pieData = (data: any) => {
-        for (let i = 0; i < data.length; i++) {
-            data[i].value = +data[i].value.toFixed();
-        }
-        return data;
-    };
-    pieData(data);
+export const ChartPie: React.FC<any> = ({pieData}) => {
     return (
         <ResponsivePie
-            data={data}
+            data={pieDataConvert(pieData)}
             margin={{top: 40, right: 80, bottom: 80, left: 80}}
             innerRadius={0.25}
             padAngle={2}
