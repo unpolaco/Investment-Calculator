@@ -1,5 +1,5 @@
 import React from 'react';
-import {CalculatorForm} from './CalculatorForm/CalculatorForm';
+import {CalculatorForm} from './CalculatorPage/CalculatorForm/CalculatorForm';
 import {ProductsPage} from './ProductsPage/ProductsPage';
 import {Main} from './App.styles';
 import {Header} from './Header/Header';
