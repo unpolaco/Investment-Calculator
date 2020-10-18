@@ -1,8 +1,9 @@
 import React from 'react';
 import {ProductItemContainer, ItemBoxTextWrapper, ItemTextName, TextBig} from './ProductItemCard.styles';
 import {IconRisk} from '../../helpers/svg/IconRisk';
+import {IconRating} from '../../helpers/svg/IconRating';
 
-export const ProductItemCard: React.FC<any> = ({risk}) => {
+export const ProductItemCard: React.FC<any> = ({risk, rating}) => {
     return (
         <>
             <ProductItemContainer>
@@ -12,13 +13,14 @@ export const ProductItemCard: React.FC<any> = ({risk}) => {
                 </ItemBoxTextWrapper>
                 <ItemBoxTextWrapper>
                     <div>
-                        rating <TextBig>1/10</TextBig>
+                        <IconRating rating={rating} />
+                        rating <TextBig>{rating}/5</TextBig>
                     </div>
                 </ItemBoxTextWrapper>
                 <ItemBoxTextWrapper>
                     <div>
                         <IconRisk risk={risk} />
-                        risk <TextBig>{risk}/10</TextBig>
+                        risk <TextBig>{risk}/6</TextBig>
                     </div>
                 </ItemBoxTextWrapper>
                 <ItemBoxTextWrapper>
