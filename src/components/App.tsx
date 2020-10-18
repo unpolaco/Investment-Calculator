@@ -1,5 +1,4 @@
 import React from 'react';
-import {CalculatorForm} from './CalculatorPage/CalculatorForm/CalculatorForm';
 import {ProductsPage} from './ProductsPage/ProductsPage';
 import {Main} from './App.styles';
 import {Header} from './Header/Header';
@@ -8,7 +7,6 @@ export const App = () => {
         <>
             <Header />
             <Main>
-                <CalculatorForm />
                 <ProductsPage />
             </Main>
         </>
