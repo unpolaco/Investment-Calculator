@@ -18,17 +18,38 @@ export const ProductItemContainer = styled.div`
     }
 `;
 export const ItemBoxTextWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     font-size: 12px;
-    border-left: 1px solid grey;
+    border-left: 1px solid #7f8c8d;
     margin: 5px;
     padding: 5px 15px;
+    width: 120px;
+    height: 40px;
 `;
 export const ItemTextName = styled.div`
     flex: 1;
+    font-weight: bold;
     margin: 5px;
     padding: 5px;
+`;
+export const ItemTextCategory = styled.div`
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 15px 0 0 0;
 `;
 export const TextBig = styled.div`
     font-size: 22px;
     font-weight: bold;
+`;
+export const Dot = styled.div`
+    height: 12px;
+    width: 12px;
+    background-color: #8e44ad;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
 `;
