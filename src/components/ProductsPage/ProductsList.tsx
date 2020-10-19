@@ -5,7 +5,7 @@ import {ProductsListContainer} from './ProductsList.styles';
 import {Loader} from '../../helpers/components/Loader/Loader';
 
 export const ProductsList: React.FC = () => {
-    const {isFetching, getProductList, productList, isError} = useGetProducts();
+    const {isFetching, getProductList, isError} = useGetProducts();
     useEffect(() => {
         getProductList();
     }, [getProductList]);
