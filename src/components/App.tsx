@@ -15,7 +15,7 @@ export const App = () => {
             <Main>
                 <Switch>
                     <Route path={'/'} exact>
-                        <Redirect to={ROUTES.CALCULATOR} />
+                        <Redirect to={ROUTES.PRODUCTS} />
                     </Route>
                     <Route path={ROUTES.CALCULATOR}>
                         <CalculatorForm />

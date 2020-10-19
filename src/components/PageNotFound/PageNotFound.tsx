@@ -1,6 +1,6 @@
 import React from 'react';
 import {Header} from './PageNotFound.styles';
-import {ReactComponent as IconNotFound} from '../../helpers/svg/IconNotFound.svg';
+import {IconNotFound} from '../../helpers/svg/IconNotFound';
 
 export const PageNotFound = () => {
     return (
