@@ -1,5 +1,6 @@
 import React from 'react';
 import {ProductsPage} from './ProductsPage/ProductsPage';
+import {PageNotFound} from './PageNotFound/PageNotFound';
 import {CalculatorForm} from './CalculatorPage/CalculatorForm/CalculatorForm';
 import {Main} from './App.styles';
 import {Header} from './Header/Header';
@@ -21,6 +22,9 @@ export const App = () => {
                     </Route>
                     <Route path={ROUTES.PRODUCTS}>
                         <ProductsPage />
+                    </Route>
+                    <Route>
+                        <PageNotFound />
                     </Route>
                 </Switch>
             </Main>
