@@ -1829,6 +1829,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/history@*":
+  version "4.7.8"
+  resolved "https://nexus.fintechchallenge.pl/repository/npm/@types/history/-/history-4.7.8.tgz#49348387983075705fe8f4e02fb67f7daaec4934"
+  integrity sha512-S78QIYirQcUoo6UJZx9CSP0O2ix9IaeAXwQi26Rhr/+mg7qqPy8TzaxHSUut7eGjL8WmLccT7/MXf304WjqHcA==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.3"
   resolved "https://nexus.fintechchallenge.pl/repository/npm/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz#4ba8ddb720221f432e443bd5f9117fd22cfd4762"
@@ -1916,6 +1921,23 @@
   resolved "https://nexus.fintechchallenge.pl/repository/npm/@types/react-dom/-/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
   integrity sha512-ykkPQ+5nFknnlU6lDd947WbQ6TE3NNzbQAkInC2EKY1qeYdTKp7onFusmYZb+ityzx2YviqT6BXSu+LyWWJwcA==
   dependencies:
+    "@types/react" "*"
+
+"@types/react-router-dom@^5.1.6":
+  version "5.1.6"
+  resolved "https://nexus.fintechchallenge.pl/repository/npm/@types/react-router-dom/-/react-router-dom-5.1.6.tgz#07b14e7ab1893a837c8565634960dc398564b1fb"
+  integrity sha512-gjrxYqxz37zWEdMVvQtWPFMFj1dRDb4TGOcgyOfSXTrEXdF92L00WE3C471O3TV/RF1oskcStkXsOU0Ete4s/g==
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "5.1.8"
+  resolved "https://nexus.fintechchallenge.pl/repository/npm/@types/react-router/-/react-router-5.1.8.tgz#4614e5ba7559657438e17766bb95ef6ed6acc3fa"
+  integrity sha512-HzOyJb+wFmyEhyfp4D4NYrumi+LQgQL/68HvJO+q6XtuHSDvw6Aqov7sCAhjbNq3bUPgPqbdvjXC5HeB2oEAPg==
+  dependencies:
+    "@types/history" "*"
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.9.0":
@@ -9708,13 +9730,6 @@ react-motion@^0.5.2:
     prop-types "^15.5.8"
     raf "^3.1.0"
 
-react-query@^2.23.1:
-  version "2.23.1"
-  resolved "https://nexus.fintechchallenge.pl/repository/npm/react-query/-/react-query-2.23.1.tgz#7d676f56d3c6e96b4de4d0b178baf6bb6a0ec272"
-  integrity sha512-qIma0Kvr//LWgWFah7RcntvD4FurXXdQaQeIfqhCWKdhihhe3Xs5BHsljAP68jo719/+xhWxL3I96SvrU4gGHA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-
 react-router-dom@^5.2.0:
   version "5.2.0"
   resolved "https://nexus.fintechchallenge.pl/repository/npm/react-router-dom/-/react-router-dom-5.2.0.tgz#9e65a4d0c45e13289e66c7b17c7e175d0ea15662"
@@ -9728,7 +9743,7 @@ react-router-dom@^5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router@5.2.0, react-router@^5.2.0:
+react-router@5.2.0:
   version "5.2.0"
   resolved "https://nexus.fintechchallenge.pl/repository/npm/react-router/-/react-router-5.2.0.tgz#424e75641ca8747fbf76e5ecca69781aa37ea293"
   integrity sha512-smz1DUuFHRKdcJC0jobGo8cVbhO3x50tCL4icacOlcwDOEQPq4TMqwx3sY1TP+DvtTgz4nm3thuo7A+BK2U0Dw==
