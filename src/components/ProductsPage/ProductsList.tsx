@@ -4,7 +4,7 @@ import {ProductItemCard} from './ProductItemCard';
 import {ProductsListContainer} from './ProductsList.styles';
 import {Loader} from '../../helpers/components/Loader/Loader';
 
-export const ProductsList = () => {
+export const ProductsList: React.FC = () => {
     const {isFetching, getProductList, productList, isError} = useGetProducts();
     useEffect(() => {
         getProductList();
@@ -14,7 +14,7 @@ export const ProductsList = () => {
         return <Loader />;
     }
     if (isError) {
-        return alert('Error');
+        alert('Error');
     }
     return (
         <>
