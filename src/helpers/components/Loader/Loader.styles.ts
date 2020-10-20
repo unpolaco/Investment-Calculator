@@ -10,10 +10,12 @@ const motion = (props: any) => keyframes`
   }
 `;
 export const Wrapper = styled.div`
-    display: inline-block;
     position: relative;
-    width: 64px;
-    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 `;
 export const RingSpinner = styled.div`
     box-sizing: border-box;
