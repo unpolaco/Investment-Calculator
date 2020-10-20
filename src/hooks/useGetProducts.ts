@@ -10,7 +10,7 @@ export const useGetProducts = () => {
         setIsFetching(true);
         try {
             const response: any = await getProducts();
-            setProductList(response);
+            setProductList(response.data);
         } catch {
             setIsError(true);
         } finally {

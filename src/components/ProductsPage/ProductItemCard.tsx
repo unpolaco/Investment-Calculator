@@ -3,12 +3,12 @@ import {ProductItemContainer, ItemBoxTextWrapper, ItemTextName, ItemTextCategory
 import {IconRisk} from '../../helpers/svg/IconRisk';
 import {IconRating} from '../../helpers/svg/IconRating';
 
-export const ProductItemCard: React.FC<any> = ({risk, rating, category}) => {
+export const ProductItemCard: React.FC<any> = ({id, name, risk, rating, rate, category}) => {
     return (
         <>
-            <ProductItemContainer>
+            <ProductItemContainer id={id}>
                 <ItemTextName>
-                    Investor Bezpiecznego Wzrostu
+                    {name}
                     <ItemTextCategory>
                         <Dot />
                         {category}
@@ -28,7 +28,7 @@ export const ProductItemCard: React.FC<any> = ({risk, rating, category}) => {
                 </ItemBoxTextWrapper>
                 <ItemBoxTextWrapper>
                     <div>
-                        av return <TextBig>12%</TextBig>
+                        rate <TextBig>{rate}%</TextBig>
                     </div>
                 </ItemBoxTextWrapper>
             </ProductItemContainer>

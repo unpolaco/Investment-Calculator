@@ -5,7 +5,7 @@ import {ProductsListContainer} from './ProductsList.styles';
 import {Loader} from '../../helpers/components/Loader/Loader';
 
 export const ProductsList: React.FC = () => {
-    const {isFetching, getProductList, isError} = useGetProducts();
+    const {isFetching, getProductList, productList, isError} = useGetProducts();
     useEffect(() => {
         getProductList();
     }, [getProductList]);
@@ -19,16 +19,19 @@ export const ProductsList: React.FC = () => {
     return (
         <>
             <ProductsListContainer>
-                <ProductItemCard risk="1" rating="3" category="dłużny" />
-                <ProductItemCard risk="3" rating="5" category="mieszany" />
-                <ProductItemCard risk="5" rating="2" category="akcyjny" />
-                <ProductItemCard risk="2" rating="4" category="mieszany" />
-                <ProductItemCard risk="5" rating="1" category="dłużny" />
-                <ProductItemCard risk="1" rating="5" category="mieszany" />
-                <ProductItemCard risk="1" rating="3" category="akcyjny" />
-                <ProductItemCard risk="4" rating="2" category="akcyjny" />
-                <ProductItemCard risk="6" rating="5" category="dłużny" />
-                <ProductItemCard risk="3" rating="2" category="akcyjny" />
+                {productList?.map((item: any) => {
+                    return (
+                        <ProductItemCard
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            risk={item.risk}
+                            rating={item.rating}
+                            rate={item.rate}
+                            category={item.category}
+                        />
+                    );
+                })}
             </ProductsListContainer>
         </>
     );
