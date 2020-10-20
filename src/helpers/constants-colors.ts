@@ -1,0 +1,32 @@
+export const colors = {
+    logoColor: '#34495e',
+    hoverColor: '#f1c40f',
+    disabledColor: '#7f8c8d',
+    errorColor: '#e74c3c',
+    bodyBackgroundColor: '#ecf0f1',
+    cardBackgroundColor: '#fff',
+    textColor: '#7f8c8d',
+    textLabelsColor: '#7f8c8d',
+    textInvertColor: '#fff',
+    loaderColor: '#34495e',
+    borderColor: '#bdc3c7',
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    riskColors: {
+        1: '#8bc34a',
+        2: '#cddc39',
+        3: '#ffeb3b',
+        4: '#ffc107',
+        5: '#ff9800',
+        6: '#ff5722',
+    },
+    ratingStarsColor: {
+        dark: '#607D8B',
+        light: '#CFD8DC',
+    },
+    categoryColors: {
+        1: '#8e44ad',
+        2: '',
+        3: '',
+        4: '',
+    },
+};

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {colors} from '../../../helpers/constants-colors';
 
 export const ResultCardContainer = styled.aside`
     flex-grow: 1;
@@ -8,14 +9,14 @@ export const ResultCardContainer = styled.aside`
     overflow: auto;
     padding: 10px;
     margin: 5px;
-    background-color: white;
+    background-color: ${colors.cardBackgroundColor};
     border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 ${colors.shadowColor};
 `;
 export const TextResult = styled.p`
     font-size: 16px;
     text-align: center;
-    color: grey;
+    color: ${colors.textColor};
 `;
 export const TextBold = styled.span`
     font-size: 17px;

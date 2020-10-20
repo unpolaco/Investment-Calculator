@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {colors} from '../../../helpers/constants-colors';
 
 export const FormContainer = styled.div`
     display: flex;
@@ -10,8 +11,8 @@ export const InputsCard = styled.aside`
     height: 95%;
     margin: 5px;
     padding: 10px;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: ${colors.cardBackgroundColor};
+    box-shadow: 0 4px 8px 0 ${colors.shadowColor};
     border-radius: 5px;
 `;
 export const Button = styled.button`
@@ -19,7 +20,7 @@ export const Button = styled.button`
     margin: 15px;
     padding: 10px;
     background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid ${colors.borderColor};
+    box-shadow: 0 4px 8px 0 ${colors.shadowColor};
     border-radius: 5px;
 `;

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {colors} from '../../helpers/constants-colors';
 
 export const FieldContainerCurrency = styled.div`
     display: inline-block;
@@ -15,7 +16,7 @@ export const Input = styled.input`
     height: 35px;
     width: 190px;
     flex: 1;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid ${colors.borderColor};
     border-radius: 5px;
     outline-color: transparent;
     text-align: right;
@@ -37,7 +38,7 @@ export const Fieldset = styled.fieldset`
 `;
 export const Label = styled.label`
     font-size: 12px;
-    color: grey;
+    color: ${colors.textLabelsColor};
     text-align: left;
     margin: 5px 0;
 `;
