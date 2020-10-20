@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import {colors} from '../../helpers/constants-colors';
+import {fontSize} from './../../helpers/constants-styles';
 
 export const CartPanelContainer = styled.aside`
     width: 25%;
@@ -18,7 +19,7 @@ export const EmptyCart = styled.aside`
     background-color: ${colors.bodyBackgroundColor};
     border-radius: 5px;
     color: ${colors.textColor};
-    font-size: 14px;
+    font-size: ${fontSize.normal};
     display: flex;
     align-items: center;
     text-align: center;

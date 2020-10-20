@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import {colors} from '../../helpers/constants-colors';
+import {fontSize} from '../../helpers/constants-styles';
 
 export const ProductItemContainer = styled.div`
     display: flex;
@@ -22,7 +23,7 @@ export const ItemBoxTextWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 12px;
+    font-size: ${fontSize.productLabel};
     border-left: 1px solid ${colors.borderColor};
     margin: 5px;
     padding: 5px 15px;
@@ -38,12 +39,12 @@ export const ItemTextName = styled.div`
 export const ItemTextCategory = styled.div`
     display: flex;
     align-items: center;
-    font-size: 12px;
+    font-size: ${fontSize.productLabel};
     font-weight: normal;
     margin: 15px 0 0 0;
 `;
 export const TextBig = styled.div`
-    font-size: 22px;
+    font-size: ${fontSize.productNumber};
     font-weight: bold;
 `;
 export const Dot = styled.div`

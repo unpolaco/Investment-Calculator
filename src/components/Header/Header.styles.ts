@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import {colors} from '../../helpers/constants-colors';
-
+import {fontSize} from './../../helpers/constants-styles';
 import {NavLink} from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
@@ -19,12 +19,12 @@ export const TitleWrapper = styled.div`
     flex: 1;
 `;
 export const Title = styled.h1`
-    font-size: 30px;
+    font-size: ${fontSize.title};
     font-weight: 600;
     color: ${colors.logoColor};
 `;
 export const SubTitle = styled.h3`
-    font-size: 14px;
+    font-size: ${fontSize.subtitle};
     color: ${colors.textColor};
 `;
 export const ButtonLink = styled(NavLink)`
