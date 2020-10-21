@@ -18,12 +18,16 @@ export const ProductsList: React.FC = () => {
     if (isError) {
         return <Error error={' :( '} />;
     }
-    const handleSelectItem = (e: any) => {
+    const handleClickItem = (e: any) => {
         e.preventDefault();
-        const selectedId: number = +e.currentTarget.getAttribute('id');
-        const selectedItem = productList.find((item: any) => item.id === selectedId);
-        const checkIfNoDouble = selectedProducts.find((el: any) => el.id === selectedId);
-        checkIfNoDouble === undefined && setSelectedProducts((prevState: any) => prevState.push(selectedItem));
+        const clickedId: number = +e.currentTarget.getAttribute('id');
+        productList.map(() => {
+            const selectedItem = productList.find((item: any) => item.id === clickedId);
+            selectedItem.selected = !selectedItem.selected;
+            return productList;
+        });
+        const selectedItems = productList.filter((item: any) => item.selected === true);
+        setSelectedProducts(selectedItems);
     };
 
     return (
@@ -39,7 +43,7 @@ export const ProductsList: React.FC = () => {
                             rating={item.rating}
                             rate={item.rate}
                             category={item.category}
-                            onSelectProduct={handleSelectItem}
+                            onClickProduct={handleClickItem}
                         />
                     );
                 })}
