@@ -2,15 +2,6 @@ import styled from '@emotion/styled';
 import {colors} from '../../helpers/constants-colors';
 import {fontSize} from './../../helpers/constants-styles';
 
-export const FieldContainerCurrency = styled.div`
-    display: inline-block;
-    ::after {
-        position: absolute;
-        top: 33px;
-        right: 15px;
-        content: 'zł';
-    }
-`;
 export const Input = styled.input`
     border-color: transparent;
     padding: 5px 35px;
@@ -40,6 +31,14 @@ export const Fieldset = styled.fieldset`
 export const Label = styled.label`
     font-size: ${fontSize.inputLabel};
     color: ${colors.textLabelsColor};
+    text-align: left;
+    margin: 5px 0;
+`;
+export const Error = styled.p`
+    position: absolute;
+    bottom: -20px;
+    font-size: ${fontSize.errorInput};
+    color: ${colors.errorColor};
     text-align: left;
     margin: 5px 0;
 `;
