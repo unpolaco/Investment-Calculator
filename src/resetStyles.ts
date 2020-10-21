@@ -9,6 +9,7 @@ export const resetStyles = `
 	font-size: 100%;
 	font-family: 'Lato', sans-serif;
 	vertical-align: baseline;
+	list-style: none;
 }
 
 body {

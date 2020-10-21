@@ -12,11 +12,17 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
                 ) : (
                     <ul>
                         {selectedProducts.map((product: any) => {
-                            return <li key={product.id}>{product.name}</li>;
+                            return (
+                                <li key={product.id}>
+                                    {product.name}
+                                    <input type="number" />
+                                </li>
+                            );
                         })}
                     </ul>
                 )}
             </EmptyCart>
+            <button>Save your values</button>
         </CartPanelContainer>
     );
 };
