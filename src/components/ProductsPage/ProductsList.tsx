@@ -4,6 +4,7 @@ import {ProductItemCard} from './ProductItemCard';
 import {ProductsListContainer} from './ProductsList.styles';
 import {Loader} from '../../helpers/components/Loader/Loader';
 import {Error} from '../../helpers/components/Error/Error';
+import {CartPanel} from './CartPanel';
 
 export const ProductsList: React.FC = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -32,6 +33,7 @@ export const ProductsList: React.FC = () => {
 
     return (
         <>
+            <CartPanel selectedProducts={selectedProducts} />
             <ProductsListContainer>
                 {productList?.map((item: any) => {
                     return (
