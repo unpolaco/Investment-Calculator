@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import {colors} from '../../helpers/constants-colors';
+import {fontSize} from '../../helpers/constants-styles';
 
 export const ProductItemContainer = styled.div`
     display: flex;
@@ -6,23 +8,23 @@ export const ProductItemContainer = styled.div`
     border-radius: 5px;
     height: 80px;
     margin: 5px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px 0 ${colors.shadowColor};
     padding: 15px;
     cursor: pointer;
     transition: 0.3s;
-    color: grey;
+    color: ${colors.textColor};
     &:hover {
-        background-color: #f1c40f;
-        color: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        background-color: ${colors.hoverColor};
+        color: ${colors.textInvertColor};
+        box-shadow: 0 4px 8px 0 ${colors.shadowColor};
     }
 `;
 export const ItemBoxTextWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 12px;
-    border-left: 1px solid #7f8c8d;
+    font-size: ${fontSize.productLabel};
+    border-left: 1px solid ${colors.borderColor};
     margin: 5px;
     padding: 5px 15px;
     width: 120px;
@@ -37,18 +39,18 @@ export const ItemTextName = styled.div`
 export const ItemTextCategory = styled.div`
     display: flex;
     align-items: center;
-    font-size: 12px;
+    font-size: ${fontSize.productLabel};
     font-weight: normal;
     margin: 15px 0 0 0;
 `;
 export const TextBig = styled.div`
-    font-size: 22px;
+    font-size: ${fontSize.productNumber};
     font-weight: bold;
 `;
 export const Dot = styled.div`
     height: 12px;
     width: 12px;
-    background-color: #8e44ad;
+    background-color: ${colors.categoryColors[1]};
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;

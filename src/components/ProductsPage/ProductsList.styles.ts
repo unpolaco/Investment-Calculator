@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {colors} from '../../helpers/constants-colors';
 
 export const ProductsListContainer = styled.aside`
     flex-grow: 1;
@@ -8,8 +9,8 @@ export const ProductsListContainer = styled.aside`
     overflow: auto;
     padding: 10px;
     margin: 5px;
-    background-color: white;
+    background-color: ${colors.cardBackgroundColor};
     border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border: 10px solid white;
+    box-shadow: 0 4px 8px 0 ${colors.shadowColor};
+    border: 10px solid ${colors.cardBackgroundColor};
 `;

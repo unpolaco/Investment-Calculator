@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useGetProducts} from '../../hooks/useGetProducts';
 import {ProductItemCard} from './ProductItemCard';
 import {ProductsListContainer} from './ProductsList.styles';
 import {Loader} from '../../helpers/components/Loader/Loader';
+import {Error} from '../../helpers/components/Error/Error';
+import {CartPanel} from './CartPanel';
 
 export const ProductsList: React.FC = () => {
-    const {isFetching, getProductList, isError} = useGetProducts();
+    const [selectedProducts, setSelectedProducts] = useState([]);
+    const {isFetching, getProductList, productList, isError} = useGetProducts();
     useEffect(() => {
         getProductList();
     }, [getProductList]);
@@ -14,21 +17,38 @@ export const ProductsList: React.FC = () => {
         return <Loader />;
     }
     if (isError) {
-        alert('Error');
+        return <Error error={' :( '} />;
     }
+    const handleClickItem = (e: any) => {
+        e.preventDefault();
+        const clickedId: number = +e.currentTarget.getAttribute('id');
+        productList.map(() => {
+            const selectedItem = productList.find((item: any) => item.id === clickedId);
+            selectedItem.selected = !selectedItem.selected;
+            return productList;
+        });
+        const selectedItems = productList.filter((item: any) => item.selected === true);
+        setSelectedProducts(selectedItems);
+    };
+
     return (
         <>
+            <CartPanel selectedProducts={selectedProducts} />
             <ProductsListContainer>
-                <ProductItemCard risk="1" rating="3" category="dłużny" />
-                <ProductItemCard risk="3" rating="5" category="mieszany" />
-                <ProductItemCard risk="5" rating="2" category="akcyjny" />
-                <ProductItemCard risk="2" rating="4" category="mieszany" />
-                <ProductItemCard risk="5" rating="1" category="dłużny" />
-                <ProductItemCard risk="1" rating="5" category="mieszany" />
-                <ProductItemCard risk="1" rating="3" category="akcyjny" />
-                <ProductItemCard risk="4" rating="2" category="akcyjny" />
-                <ProductItemCard risk="6" rating="5" category="dłużny" />
-                <ProductItemCard risk="3" rating="2" category="akcyjny" />
+                {productList?.map((item: any) => {
+                    return (
+                        <ProductItemCard
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            risk={item.risk}
+                            rating={item.rating}
+                            rate={item.rate}
+                            category={item.category}
+                            onClickProduct={handleClickItem}
+                        />
+                    );
+                })}
             </ProductsListContainer>
         </>
     );
