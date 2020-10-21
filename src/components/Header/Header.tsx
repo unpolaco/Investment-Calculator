@@ -3,7 +3,7 @@ import {ButtonLink, LinkWrapper, HeaderContainer, Title, SubTitle, TitleWrapper}
 import {ROUTES} from '../../helpers/routes';
 
 export const Header = () => {
-    const [currentPage, setCurrentPage] = useState<string>();
+    const [currentPage, setCurrentPage] = useState<string>('products');
 
     const handleSetCurrentPage = (currentPage: string) => {
         setCurrentPage(currentPage);
