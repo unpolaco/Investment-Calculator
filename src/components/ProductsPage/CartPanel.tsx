@@ -1,6 +1,7 @@
 import React from 'react';
 import {CartPanelContainer, EmptyCart} from './CartPanel.styles';
 import {CartPanelInput} from './CartPanelInput';
+import {CartPanelProductItem} from './CartPanelIProductItem';
 
 export const CartPanel: React.FC<any> = ({selectedProducts}) => {
     return (
@@ -11,14 +12,9 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
                     'Click on the list on the right side to add product to the cart'
                 ) : (
                     <ul>
-                        {selectedProducts.map((product: any) => {
-                            return (
-                                <li key={product.id}>
-                                    {product.name}
-                                    <input type="number" />
-                                </li>
-                            );
-                        })}
+                        {selectedProducts.map((product: any) => (
+                            <CartPanelProductItem key={product.id} name={product.name} />
+                        ))}
                     </ul>
                 )}
             </EmptyCart>
