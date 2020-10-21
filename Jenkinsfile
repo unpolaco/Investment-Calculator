@@ -38,6 +38,11 @@ pipeline {
                 script {
                     docker.withRegistry('https://kale-team-docker-registry.fintechchallenge.pl/v2/', 'docker-push-user') {
                         def build = docker.build("kale-team/solid-investment-calculator-ui", '-f ./docker/Dockerfile .')
+                        def commitHash = sh(
+                            script: 'git rev-parse HEAD',
+                            returnStdout: true
+                        )
+                        build.push(commitHash)
                         build.push("latest")
                     }
                 }
