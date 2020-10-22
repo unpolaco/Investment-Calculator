@@ -10,6 +10,12 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
             return product;
         });
     }
+    function calculatePercentageQuota() {
+        selectedProducts = selectedProducts.map((product: any) => {
+            product.percentQuota = (product.amount / totalAmount) * 100;
+            return product;
+        });
+    }
     function handleSubmit(values: any) {
         totalAmount = 0;
         addAmountsToSelectedProducts(values);
@@ -20,6 +26,7 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
             }
             return totalAmount;
         });
+        calculatePercentageQuota();
         formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
     }
     let totalAmount = 0;
@@ -37,7 +44,10 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
                             ) : (
                                 <ul>
                                     {selectedProducts.map((product: any) => (
-                                        <CartPanelProductItem key={product.id} name={product.name} id={product.id} />
+                                        <>
+                                            <div>{product.percentQuota}</div>
+                                            <CartPanelProductItem key={product.id} name={product.name} id={product.id} />
+                                        </>
                                     ))}
                                 </ul>
                             )}
