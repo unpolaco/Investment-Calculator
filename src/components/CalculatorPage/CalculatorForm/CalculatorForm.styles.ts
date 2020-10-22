@@ -16,11 +16,15 @@ export const InputsCard = styled.aside`
     border-radius: 5px;
 `;
 export const Button = styled.button`
-    height: 80%;
     margin: 15px;
     padding: 10px;
     background-color: white;
-    border: 1px solid ${colors.borderColor};
-    box-shadow: 0 4px 8px 0 ${colors.shadowColor};
+    color: ${colors.hoverColor};
+    border: 1px solid ${colors.hoverColor};
     border-radius: 5px;
+    &:hover {
+        background-color: ${colors.hoverColor};
+        color: ${colors.textInvertColor};
+        box-shadow: 0 4px 8px 0 ${colors.shadowColor};
+    }
 `;
