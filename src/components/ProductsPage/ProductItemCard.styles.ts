@@ -8,11 +8,13 @@ export const ProductItemContainer = styled.div`
     border-radius: 5px;
     height: 80px;
     margin: 5px;
-    box-shadow: 0 2px 4px 0 ${colors.shadowColor};
+    box-shadow: ${({color}) => (color ? `0 4px 8px 0 ${colors.shadowColor}` : `0 2px 4px 0 ${colors.shadowColor}`)};
     padding: 15px;
     cursor: pointer;
     transition: 0.3s;
-    color: ${colors.textColor};
+    color: ${({color}) => (color ? colors.textInvertColor : colors.textColor)};
+    transform: ${({color}) => (color ? 'scaleX(1.01)' : 'scaleX(1)')};
+    background-color: ${({color}) => (color ? colors.hoverColor : colors.cardBackgroundColor)};
     &:hover {
         background-color: ${colors.hoverColor};
         color: ${colors.textInvertColor};
