@@ -19,7 +19,7 @@ spec:
                 - name: fintech-docker-secret
             containers:
                 - name: solid-investment-calculator-ui
-                  image: kale-team-docker-registry.fintechchallenge.pl/kale-team/solid-investment-calculator-ui:latest
+                  image: kale-team-docker-registry.fintechchallenge.pl/kale-team/solid-investment-calculator-ui:image_version_placeholder
                   imagePullPolicy: Always
                   env:
                       - name: API_BASE_PATH
@@ -105,7 +105,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`solid-investment-calculator-ui.kale-team.prod.fintechchallenge.pl`)
+          match: Host(`solid-investment-calculator-ui.kale-team.fintechchallenge.pl`)
           middlewares:
               - name: fintech-prod-kale-team-basic-auth-middleware
                 namespace: fintech-prod-kale-team
@@ -121,4 +121,4 @@ spec:
             namespace: fintech-prod-kale-team
         certResolver: hltech
         domains:
-            - main: solid-investment-calculator-ui.kale-team.prod.fintechchallenge.pl
+            - main: solid-investment-calculator-ui.kale-team.fintechchallenge.pl
