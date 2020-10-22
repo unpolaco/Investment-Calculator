@@ -104,7 +104,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`solid-investment-calculator-ui.kale-team.prod.fintechchallenge.pl`)
+          match: Host(`solid-investment-calculator-ui.kale-team.fintechchallenge.pl`)
           middlewares:
               - name: fintech-prod-kale-team-basic-auth-middleware
                 namespace: fintech-prod-kale-team
@@ -120,4 +120,4 @@ spec:
             namespace: fintech-prod-kale-team
         certResolver: hltech
         domains:
-            - main: solid-investment-calculator-ui.kale-team.prod.fintechchallenge.pl
+            - main: solid-investment-calculator-ui.kale-team.fintechchallenge.pl
