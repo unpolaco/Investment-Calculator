@@ -4,13 +4,8 @@ import {CartPanelContainer, EmptyCart} from './CartPanel.styles';
 import {CartPanelProductItem} from './CartPanelIProductItem';
 
 export const CartPanel: React.FC<any> = ({selectedProducts}) => {
-    const calculatePercentageQuota = (values: any) => {};
-
     const handleSubmit = (values: any) => {
-        console.log(values);
-        console.log(selectedProducts);
-        // return values;
-        const calculate = selectedProducts.map((product: any) => {});
+        return values;
     };
     return (
         <CartPanelContainer>
