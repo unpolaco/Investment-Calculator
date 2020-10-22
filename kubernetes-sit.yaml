@@ -23,7 +23,7 @@ spec:
                   imagePullPolicy: Always
                   env:
                       - name: API_BASE_PATH
-                        value: placeholder
+                        value: https://user-service.kale-team.sit.fintechchallenge.pl
                   ports:
                       - name: web
                         containerPort: 80
@@ -80,7 +80,8 @@ metadata:
 
 data:
     users: |
-      c29saWRlcnM6JGFwcjEkaDFFVTlVSzkkdTkzbC44SG1YU2pSSFlicXA5L25OLwoK
+        c29saWRlcnM6JGFwcjEkaDFFVTlVSzkkdTkzbC44SG1YU2pSSFlicXA5L25OLwoK
+
 
 #encryped username: example, with password: example
 
