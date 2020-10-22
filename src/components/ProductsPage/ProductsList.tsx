@@ -46,6 +46,7 @@ export const ProductsList: React.FC = () => {
                             rate={item.rate}
                             category={item.category}
                             onClickProduct={handleClickItem}
+                            isSelected={item.selected}
                         />
                     );
                 })}

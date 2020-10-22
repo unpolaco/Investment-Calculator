@@ -3,14 +3,15 @@ import {ProductItemContainer, ItemBoxTextWrapper, ItemTextName, ItemTextCategory
 import {IconRisk} from '../../helpers/svg/IconRisk';
 import {IconRating} from '../../helpers/svg/IconRating';
 
-export const ProductItemCard: React.FC<any> = ({id, name, risk, rating, rate, category, onClickProduct}) => {
+export const ProductItemCard: React.FC<any> = ({id, name, risk, rating, rate, category, onClickProduct, isSelected}) => {
     const handleClick = (e: any) => {
         onClickProduct(e);
     };
+
     return (
         <>
-            <ProductItemContainer id={id} onClick={handleClick}>
-                <ItemTextName>
+            <ProductItemContainer id={id} color={isSelected} onClick={handleClick}>
+                <ItemTextName color={isSelected}>
                     {name}
                     <ItemTextCategory>
                         <Dot />
