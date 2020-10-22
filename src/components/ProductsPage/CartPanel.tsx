@@ -1,17 +1,36 @@
 import React from 'react';
 import {Formik, Form} from 'formik';
-import {CartPanelContainer, EmptyCart} from './CartPanel.styles';
+import {CartPanelContainer, EmptyCart, Button} from './CartPanel.styles';
 import {CartPanelProductItem} from './CartPanelIProductItem';
 
 export const CartPanel: React.FC<any> = ({selectedProducts}) => {
-    const handleSubmit = (values: any) => {
-        return values;
-    };
+    function addAmountsToSelectedProducts(values: any) {
+        selectedProducts = selectedProducts.map((product: any) => {
+            product.amount = values[product.name];
+            return product;
+        });
+    }
+    function handleSubmit(values: any) {
+        totalAmount = 0;
+        addAmountsToSelectedProducts(values);
+        selectedProducts.map((product: any) => {
+            for (let i = 0; i < selectedProducts.length; i++) {
+                totalAmount = totalAmount + product.amount;
+                return totalAmount;
+            }
+            return totalAmount;
+        });
+        formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
+    }
+    let totalAmount = 0;
+    let formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
+
     return (
         <CartPanelContainer>
             <Formik initialValues={{}} onSubmit={handleSubmit}>
                 {({handleSubmit, values}) => (
                     <Form onSubmit={handleSubmit}>
+                        <div>Your total amount is {formattedTotalAmount}</div>
                         <EmptyCart>
                             {selectedProducts.length === 0 ? (
                                 'Click on the list on the right side to add product to the cart'
@@ -23,7 +42,7 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
                                 </ul>
                             )}
                         </EmptyCart>
-                        <button type="submit">Save your values</button>
+                        <Button type="submit">Save your values</Button>
                     </Form>
                 )}
             </Formik>
