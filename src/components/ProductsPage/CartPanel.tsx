@@ -2,35 +2,18 @@ import React from 'react';
 import {Formik, Form} from 'formik';
 import {CartPanelContainer, EmptyCart, Button} from './CartPanel.styles';
 import {CartPanelProductItem} from './CartPanelIProductItem';
+import {addAmountsToSelectedProducts, calculatePercentageQuota, calculateTotalAmount} from './CartPanel.helpers';
 
 export const CartPanel: React.FC<any> = ({selectedProducts}) => {
-    function addAmountsToSelectedProducts(values: any) {
-        selectedProducts = selectedProducts.map((product: any) => {
-            product.amount = values[product.name];
-            return product;
-        });
-    }
-    function calculatePercentageQuota() {
-        selectedProducts = selectedProducts.map((product: any) => {
-            product.percentQuota = (product.amount / totalAmount) * 100;
-            return product;
-        });
-    }
     function handleSubmit(values: any) {
         totalAmount = 0;
-        addAmountsToSelectedProducts(values);
-        selectedProducts.map((product: any) => {
-            for (let i = 0; i < selectedProducts.length; i++) {
-                totalAmount = totalAmount + product.amount;
-                return totalAmount;
-            }
-            return totalAmount;
-        });
-        calculatePercentageQuota();
+        addAmountsToSelectedProducts(selectedProducts, values);
+        calculateTotalAmount(selectedProducts, totalAmount);
+        calculatePercentageQuota(selectedProducts, totalAmount);
         formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
     }
     let totalAmount = 0;
-    let formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
+    let formattedTotalAmount = '0';
 
     return (
         <CartPanelContainer>
