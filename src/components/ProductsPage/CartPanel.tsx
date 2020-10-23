@@ -8,7 +8,7 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
     function handleSubmit(values: any) {
         totalAmount = 0;
         addAmountsToSelectedProducts(selectedProducts, values);
-        selectedProducts = selectedProducts.map((product: any) => {
+        selectedProducts.map((product: any) => {
             for (let i = 0; i < selectedProducts.length; i++) {
                 totalAmount = totalAmount + product.amount;
                 return totalAmount;

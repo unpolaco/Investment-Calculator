@@ -6,7 +6,7 @@ export function addAmountsToSelectedProducts(selectedProducts: any, values: any)
 }
 export function calculatePercentageQuota(selectedProducts: any, totalAmount: any) {
     selectedProducts = selectedProducts.map((product: any) => {
-        product.percentQuota = (product.amount / totalAmount) * 100;
+        product.percentQuota = ((product.amount / totalAmount) * 100).toFixed();
         return product;
     });
 }
