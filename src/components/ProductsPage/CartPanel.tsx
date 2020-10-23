@@ -4,12 +4,13 @@ import {CartPanelContainer, EmptyCart, Button} from './CartPanel.styles';
 import {CartPanelProductItem} from './CartPanelIProductItem';
 import {addAmountsToSelectedProducts, calculatePercentageQuota} from './CartPanel.helpers';
 
-export const CartPanel: React.FC<any> = ({selectedProducts}) => {
+export const CartPanel: React.FC<any> = ({selectedProducts, handleSendProducts}) => {
     const [totalAmount, setTotalAmount] = useState(0);
 
     function handleSubmit(values: any) {
         let calculatedTotalAmount = 0;
         addAmountsToSelectedProducts(selectedProducts, values);
+
         selectedProducts.map((product: any) => {
             for (let i = 0; i < selectedProducts.length; i++) {
                 calculatedTotalAmount = calculatedTotalAmount + product.amount;
@@ -19,6 +20,7 @@ export const CartPanel: React.FC<any> = ({selectedProducts}) => {
         });
         calculatePercentageQuota(selectedProducts, calculatedTotalAmount);
         setTotalAmount(calculatedTotalAmount);
+        handleSendProducts(selectedProducts);
     }
     const formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
 

@@ -2,26 +2,26 @@ import {useCallback, useState} from 'react';
 import {sendSelectedProducts} from '../api/sendSelectedProducts';
 
 export const useSendSelectedProducts = () => {
-    const [isFetching, setIsFetching] = useState<boolean>(false);
-    const [isError, setIsError] = useState<boolean>(false);
-    const [response, setResponse] = useState<any>();
+    const [isFetchingSend, setIsFetchingSend] = useState<boolean>(false);
+    const [isErrorSend, setIsErrorSend] = useState<boolean>(false);
+    const [calculatedInvPortfolio, setCalculatedInvPortfolio] = useState<any>();
 
     const sendProducts = useCallback(async data => {
-        setIsFetching(true);
+        setIsFetchingSend(true);
         try {
             const response: any = await sendSelectedProducts(data);
-            setResponse(response);
+            setCalculatedInvPortfolio(response);
         } catch {
-            setIsError(true);
+            setIsErrorSend(true);
         } finally {
-            setIsFetching(false);
+            setIsFetchingSend(false);
         }
     }, []);
 
     return {
-        isFetching,
-        isError,
-        response,
+        isFetchingSend,
+        isErrorSend,
+        calculatedInvPortfolio,
         sendProducts,
     };
 };
