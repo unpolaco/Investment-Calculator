@@ -10,12 +10,3 @@ export function calculatePercentageQuota(selectedProducts: any, totalAmount: any
         return product;
     });
 }
-export function calculateTotalAmount(selectedProducts: any, totalAmount: any) {
-    selectedProducts.map((product: any) => {
-        for (let i = 0; i < selectedProducts.length; i++) {
-            totalAmount = totalAmount + product.amount;
-            return totalAmount;
-        }
-        return totalAmount;
-    });
-}
