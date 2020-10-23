@@ -6,6 +6,8 @@ import {Loader} from '../../helpers/components/Loader/Loader';
 import {Error} from '../../helpers/components/Error/Error';
 import {CartPanel} from './CartPanel';
 import {useSendSelectedProducts} from '../../hooks/useSendSelectedProducts';
+import {ProductCalculatedResultCard} from './ProductCalculatedResultCard';
+
 export const ProductsList: React.FC = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const {isFetchingGet, getProductList, productList, isErrorGet} = useGetProducts();
@@ -48,7 +50,7 @@ export const ProductsList: React.FC = () => {
             <CartPanel handleSendProducts={handleSendProducts} selectedProducts={selectedProducts} />
 
             {calculatedInvPortfolio ? (
-                <div>Result Component</div>
+                <ProductCalculatedResultCard calculatedInvPortfolio={calculatedInvPortfolio} />
             ) : (
                 <ProductsListContainer>
                     {productList?.map((item: any) => {
