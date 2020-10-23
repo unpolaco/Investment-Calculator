@@ -10,7 +10,7 @@ export const useSendSelectedProducts = () => {
         setIsFetchingSend(true);
         try {
             const response: any = await sendSelectedProducts(data);
-            setCalculatedInvPortfolio(response);
+            setCalculatedInvPortfolio(response.data);
         } catch {
             setIsErrorSend(true);
         } finally {
