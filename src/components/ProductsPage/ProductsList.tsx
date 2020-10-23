@@ -46,23 +46,28 @@ export const ProductsList: React.FC = () => {
     return (
         <>
             <CartPanel handleSendProducts={handleSendProducts} selectedProducts={selectedProducts} />
-            <ProductsListContainer>
-                {productList?.map((item: any) => {
-                    return (
-                        <ProductItemCard
-                            key={item.id}
-                            id={item.id}
-                            name={item.name}
-                            risk={item.risk}
-                            rating={item.rating}
-                            rate={item.rate}
-                            category={item.category}
-                            onClickProduct={handleClickItem}
-                            isSelected={item.selected}
-                        />
-                    );
-                })}
-            </ProductsListContainer>
+
+            {calculatedInvPortfolio ? (
+                <div>Result Component</div>
+            ) : (
+                <ProductsListContainer>
+                    {productList?.map((item: any) => {
+                        return (
+                            <ProductItemCard
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                risk={item.risk}
+                                rating={item.rating}
+                                rate={item.rate}
+                                category={item.category}
+                                onClickProduct={handleClickItem}
+                                isSelected={item.selected}
+                            />
+                        );
+                    })}
+                </ProductsListContainer>
+            )}
         </>
     );
 };
