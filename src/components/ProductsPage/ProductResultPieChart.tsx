@@ -29,6 +29,7 @@ export const ProductResultPieChart: React.FC<any> = ({pieChartData}) => {
             radialLabelsLinkHorizontalLength={20}
             radialLabelsLinkStrokeWidth={1}
             radialLabelsLinkColor={{from: 'color'}}
+            sliceLabel={d => `${d.value} - ${d.percentQuota}% percent`}
             slicesLabelsSkipAngle={10}
             slicesLabelsTextColor="#333333"
             animate={true}
