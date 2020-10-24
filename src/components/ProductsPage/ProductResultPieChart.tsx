@@ -1,12 +1,12 @@
 import React from 'react';
 import {ResponsivePie} from '@nivo/pie';
 
-export const ChartPie: React.FC<any> = ({pieChartData}) => {
+export const ProductResultPieChart: React.FC<any> = ({pieChartData}) => {
     const data = pieChartData.investmentList;
     data.map((product: any) => {
         delete product.id;
         product.id = product.name;
-        product.amount = product.value;
+        product.value = product.amount;
         delete product.amount;
         return product;
     });
