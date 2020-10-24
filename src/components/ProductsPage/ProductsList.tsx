@@ -5,18 +5,22 @@ import {ProductsListContainer} from './ProductsList.styles';
 import {Loader} from '../../helpers/components/Loader/Loader';
 import {Error} from '../../helpers/components/Error/Error';
 import {CartPanel} from './CartPanel';
+import {useSendSelectedProducts} from '../../hooks/useSendSelectedProducts';
+import {ProductCalculatedResultCard} from './ProductCalculatedResultCard';
 
 export const ProductsList: React.FC = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
-    const {isFetching, getProductList, productList, isError} = useGetProducts();
+    const {isFetchingGet, getProductList, productList, isErrorGet} = useGetProducts();
+    const {isFetchingSend, isErrorSend, calculatedInvPortfolio, sendProducts} = useSendSelectedProducts();
+
     useEffect(() => {
         getProductList();
     }, [getProductList]);
 
-    if (isFetching) {
+    if (isFetchingGet || isFetchingSend) {
         return <Loader />;
     }
-    if (isError) {
+    if (isErrorGet || isErrorSend) {
         return <Error error={' :( '} />;
     }
     const handleClickItem = (e: any) => {
@@ -31,26 +35,41 @@ export const ProductsList: React.FC = () => {
         setSelectedProducts(selectedItems);
     };
 
+    const handleSendProducts = (selectedProductsToSend: any) => {
+        selectedProductsToSend.map((product: any) => {
+            delete product.selected;
+            return product;
+        });
+        const preparedDataToSend: any = {};
+        preparedDataToSend.investmentList = selectedProductsToSend;
+        sendProducts(preparedDataToSend);
+    };
+
     return (
         <>
-            <CartPanel selectedProducts={selectedProducts} />
-            <ProductsListContainer>
-                {productList?.map((item: any) => {
-                    return (
-                        <ProductItemCard
-                            key={item.id}
-                            id={item.id}
-                            name={item.name}
-                            risk={item.risk}
-                            rating={item.rating}
-                            rate={item.rate}
-                            category={item.category}
-                            onClickProduct={handleClickItem}
-                            isSelected={item.selected}
-                        />
-                    );
-                })}
-            </ProductsListContainer>
+            <CartPanel handleSendProducts={handleSendProducts} selectedProducts={selectedProducts} />
+
+            {calculatedInvPortfolio ? (
+                <ProductCalculatedResultCard calculatedInvPortfolio={calculatedInvPortfolio} />
+            ) : (
+                <ProductsListContainer>
+                    {productList?.map((item: any) => {
+                        return (
+                            <ProductItemCard
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                risk={item.risk}
+                                rating={item.rating}
+                                rate={item.rate}
+                                category={item.category}
+                                onClickProduct={handleClickItem}
+                                isSelected={item.selected}
+                            />
+                        );
+                    })}
+                </ProductsListContainer>
+            )}
         </>
     );
 };
