@@ -1,19 +1,26 @@
 import React from 'react';
-import {Field, useField} from 'formik';
-import {Input, Label, Error, Fieldset} from './CartPanelProductItem.styles';
+import {Field} from 'formik';
+import {Input, Label, Fieldset} from './CartPanelProductItem.styles';
 
-export const CartPanelProductItem: React.FC<any> = ({name, id}) => {
-    const [field, meta] = useField(name);
+export const CartPanelProductItem: React.FC<any> = ({name, id, handleBlur, calculateProducts, values}) => {
     return (
-        <>
-            <li key={id}>
+        <div key={id}>
+            <Fieldset>
                 {name}
-                <Fieldset>
-                    <Label>Enter amount</Label>
-                    <Field autoFocus type="number" as={Input} {...field} />
-                    {meta.error && <Error>{meta.error}</Error>}
-                </Fieldset>
-            </li>
-        </>
+                <Label>Enter amount</Label>
+                <Field
+                    autoFocus
+                    autoComplete="off"
+                    type="number"
+                    as={Input}
+                    name={name}
+                    value={values.name}
+                    onBlur={(e: any) => {
+                        handleBlur(e);
+                        calculateProducts(values);
+                    }}
+                />
+            </Fieldset>
+        </div>
     );
 };
