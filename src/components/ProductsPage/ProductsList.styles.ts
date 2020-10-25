@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import {colors} from '../../helpers/constants-colors';
 
 export const ProductsListContainer = styled.aside`
+    display: flex;
     flex-grow: 1;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     height: 100%;
     overflow: auto;
-    padding: 10px;
     margin: 5px;
     background-color: ${colors.cardBackgroundColor};
     border-radius: 5px;

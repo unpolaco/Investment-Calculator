@@ -14,7 +14,7 @@ export const ProductItemContainer = styled.div`
     transition: 0.3s;
     color: ${({color}) => (color ? colors.textInvertColor : colors.textColor)};
     transform: ${({color}) => (color ? 'scaleX(1.01)' : 'scaleX(1)')};
-    background-color: ${({color}) => (color ? colors.hoverColor : colors.cardBackgroundColor)};
+    background-color: ${({color}) => (color ? colors.hoverColor : colors.listItemsColor)};
     &:hover {
         background-color: ${colors.hoverColor};
         color: ${colors.textInvertColor};

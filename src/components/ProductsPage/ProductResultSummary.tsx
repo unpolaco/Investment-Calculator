@@ -1,5 +1,5 @@
 import React from 'react';
-import {ProductResultSummaryContainer} from './ProductResultSummary.styles';
+import {ProductResultSummaryContainer, Title} from './ProductResultSummary.styles';
 import {ProductSummaryCard} from './ProductSummaryCard';
 
 export const ProductResultSummary: React.FC<any> = ({calculatedInvPortfolio}) => {
@@ -7,14 +7,14 @@ export const ProductResultSummary: React.FC<any> = ({calculatedInvPortfolio}) =>
 
     return (
         <ProductResultSummaryContainer>
-            Yours products:
+            <Title>Yours products:</Title>
             {selectedProducts.map((product: any) => (
                 <div key={product.id}>
                     <ProductSummaryCard
                         key={product.id}
                         id={product.id}
                         name={product.name}
-                        value={product.value}
+                        amount={product.amount}
                         risk={product.risk}
                         rating={product.rating}
                         rate={product.rate}
@@ -22,7 +22,6 @@ export const ProductResultSummary: React.FC<any> = ({calculatedInvPortfolio}) =>
                     />
                 </div>
             ))}
-            <div></div>
         </ProductResultSummaryContainer>
     );
 };

@@ -6,8 +6,8 @@ export const CartPanelContainer = styled.aside`
     height: 100%;
     width: 25vw;
     margin: 5px;
-    padding: 10px;
-    background-color: ${colors.cardBackgroundColor};
+    padding: 20px;
+    background-color: ${colors.lightenDarkBackground};
     box-shadow: 0 4px 8px 0 ${colors.shadowColor};
     border-radius: 5px;
 `;
@@ -40,7 +40,7 @@ export const EmptyCartText = styled.p`
 `;
 export const TotalAmount = styled.p`
     font-size: ${fontSize.normal};
-    color: ${colors.textActiveColor};
+    color: ${colors.textInvertColor};
     text-align: center;
     margin: 20px 0;
 `;
@@ -51,7 +51,7 @@ export const Button = styled.button`
     margin: 15px 0;
     width: 100%;
     padding: 10px;
-    background-color: white;
+    background-color: ${colors.lightenDarkBackground};
     color: ${colors.hoverColor};
     border: 1px solid ${colors.hoverColor};
     border-radius: 5px;
