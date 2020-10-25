@@ -1,19 +1,30 @@
 import React from 'react';
-import {Field, useField} from 'formik';
-import {Input, Label, Error, Fieldset} from './CartPanelProductItem.styles';
+import {Field} from 'formik';
+import {Input, Fieldset, FieldWrapper, PercentQuota, ProductName, FieldContainerCurrency} from './CartPanelProductItem.styles';
 
-export const CartPanelProductItem: React.FC<any> = ({name, id}) => {
-    const [field, meta] = useField(name);
+export const CartPanelProductItem: React.FC<any> = ({name, id, handleBlur, calculateProducts, values, percentQuota}) => {
     return (
-        <>
-            <li key={id}>
-                {name}
-                <Fieldset>
-                    <Label>Enter amount</Label>
-                    <Field autoFocus type="number" as={Input} {...field} />
-                    {meta.error && <Error>{meta.error}</Error>}
-                </Fieldset>
-            </li>
-        </>
+        <div key={id}>
+            <Fieldset>
+                <ProductName>{name}</ProductName>
+                <FieldWrapper>
+                    <FieldContainerCurrency>
+                        <Field
+                            autoFocus
+                            autoComplete="off"
+                            type="number"
+                            as={Input}
+                            name={name}
+                            value={values.name}
+                            onBlur={(e: any) => {
+                                handleBlur(e);
+                                calculateProducts(values);
+                            }}
+                        />
+                    </FieldContainerCurrency>
+                    <PercentQuota>/ {percentQuota || 0}%</PercentQuota>
+                </FieldWrapper>
+            </Fieldset>
+        </div>
     );
 };

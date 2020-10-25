@@ -1,3 +1,5 @@
+import {colors} from './helpers/constants-colors';
+
 export const resetStyles = `
 *, 
 *::before,
@@ -13,6 +15,6 @@ export const resetStyles = `
 }
 
 body {
-	background-color: #ecf0f1;
+	background-color: ${colors.bodyBackgroundColor};
 }
 `;

@@ -5,21 +5,12 @@ import {fontSize} from '../../helpers/constants-styles';
 export const ProductItemContainer = styled.div`
     display: flex;
     align-items: center;
-    border-radius: 5px;
     height: 80px;
-    margin: 5px;
-    box-shadow: ${({color}) => (color ? `0 4px 8px 0 ${colors.shadowColor}` : `0 2px 4px 0 ${colors.shadowColor}`)};
     padding: 15px;
-    cursor: pointer;
     transition: 0.3s;
     color: ${({color}) => (color ? colors.textInvertColor : colors.textColor)};
     transform: ${({color}) => (color ? 'scaleX(1.01)' : 'scaleX(1)')};
     background-color: ${({color}) => (color ? colors.hoverColor : colors.listItemsColor)};
-    &:hover {
-        background-color: ${colors.hoverColor};
-        color: ${colors.textInvertColor};
-        box-shadow: 0 4px 8px 0 ${colors.shadowColor};
-    }
 `;
 export const ItemBoxTextWrapper = styled.div`
     display: flex;
@@ -31,6 +22,13 @@ export const ItemBoxTextWrapper = styled.div`
     padding: 5px 15px;
     width: 120px;
     height: 40px;
+`;
+export const ItemTextAmount = styled.div`
+    flex: 1;
+    font-size: ${fontSize.summaryAmount};
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
 `;
 export const ItemTextName = styled.div`
     flex: 1;

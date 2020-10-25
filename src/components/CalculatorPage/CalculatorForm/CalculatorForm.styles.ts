@@ -8,17 +8,17 @@ export const FormContainer = styled.div`
 `;
 export const InputsCard = styled.aside`
     width: 25%;
-    height: 95%;
+    height: 100%;
     margin: 5px;
     padding: 10px;
-    background-color: ${colors.cardBackgroundColor};
+    background-color: ${colors.lightenDarkBackground};
     box-shadow: 0 4px 8px 0 ${colors.shadowColor};
     border-radius: 5px;
 `;
 export const Button = styled.button`
     margin: 15px;
     padding: 10px;
-    background-color: white;
+    background-color: ${colors.lightenDarkBackground};
     color: ${colors.hoverColor};
     border: 1px solid ${colors.hoverColor};
     border-radius: 5px;

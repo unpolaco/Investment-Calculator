@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
-import {CartPanelContainer, EmptyCart, Button} from './CartPanel.styles';
+import {CartPanelContainer, EmptyCart, Button, EmptyCartText, TotalAmount, TextBold} from './CartPanel.styles';
 import {CartPanelProductItem} from './CartPanelIProductItem';
 import {addAmountsToSelectedProducts, calculatePercentageQuota} from './CartPanel.helpers';
+import {initialValues} from '../CalculatorPage/CalculatorForm/CalculatorForm.constants';
 
 export const CartPanel: React.FC<any> = ({selectedProducts, handleSendProducts}) => {
     const [totalAmount, setTotalAmount] = useState(0);
 
-    function handleSubmit(values: any) {
+    function calculateProducts(values: any) {
         let calculatedTotalAmount = 0;
         addAmountsToSelectedProducts(selectedProducts, values);
 
@@ -20,31 +21,44 @@ export const CartPanel: React.FC<any> = ({selectedProducts, handleSendProducts})
         });
         calculatePercentageQuota(selectedProducts, calculatedTotalAmount);
         setTotalAmount(calculatedTotalAmount);
+    }
+    function handleSubmit(values: any) {
+        calculateProducts(values);
         handleSendProducts(selectedProducts);
     }
     const formattedTotalAmount = new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(totalAmount);
 
     return (
         <CartPanelContainer>
-            <Formik initialValues={{}} onSubmit={handleSubmit}>
-                {({handleSubmit, values}) => (
+            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+                {({handleSubmit, values, handleBlur}) => (
                     <Form onSubmit={handleSubmit}>
-                        <div>Your total amount is {formattedTotalAmount}</div>
+                        <TotalAmount>
+                            Your total amount is <TextBold>{formattedTotalAmount}</TextBold>
+                        </TotalAmount>
                         <EmptyCart>
                             {selectedProducts.length === 0 ? (
-                                'Click on the list on the right side to add product to the cart'
+                                <EmptyCartText>Click on the list to add product to the cart</EmptyCartText>
                             ) : (
-                                <ul>
+                                <div>
+                                    <div>Enter amount on each product</div>
                                     {selectedProducts.map((product: any) => (
-                                        <>
-                                            <div>{product.percentQuota}</div>
-                                            <CartPanelProductItem key={product.id} name={product.name} id={product.id} />
-                                        </>
+                                        <div key={product.id}>
+                                            <CartPanelProductItem
+                                                key={product.id}
+                                                name={product.name}
+                                                id={product.id}
+                                                handleBlur={handleBlur}
+                                                calculateProducts={calculateProducts}
+                                                values={values}
+                                                percentQuota={product.percentQuota}
+                                            />
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             )}
                         </EmptyCart>
-                        <Button type="submit">Save your values</Button>
+                        <Button type="submit">Submit your products</Button>
                     </Form>
                 )}
             </Formik>
