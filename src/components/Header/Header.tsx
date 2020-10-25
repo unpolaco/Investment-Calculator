@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {ButtonLink, LinkWrapper, HeaderContainer, Title, SubTitle, TitleWrapper} from './Header.styles';
 import {ROUTES} from '../../helpers/routes';
+import {IconLogo} from '../../helpers/svg/IconLogo';
 
 export const Header = () => {
     const [currentPage, setCurrentPage] = useState<string>('products');
@@ -8,12 +9,12 @@ export const Header = () => {
     const handleSetCurrentPage = (currentPage: string) => {
         setCurrentPage(currentPage);
     };
-
     return (
         <HeaderContainer>
+            <IconLogo />
             <TitleWrapper>
                 <Title>SOLIDers Financial Group</Title>
-                <SubTitle>SOLIDers is a leading provider of high quality investment services and products</SubTitle>
+                <SubTitle>SOLIDers is a leading provider of high quality investment services</SubTitle>
             </TitleWrapper>
             {currentPage === 'calculator' || currentPage === undefined ? (
                 <LinkWrapper>
@@ -24,9 +25,9 @@ export const Header = () => {
                 </LinkWrapper>
             ) : (
                 <LinkWrapper>
-                    <div>Check our new feature - Investment Calculator!</div>
+                    <div>Check our new feature!</div>
                     <ButtonLink onClick={() => handleSetCurrentPage('calculator')} to={ROUTES.CALCULATOR}>
-                        Go to Investment Calculator
+                        Investment Calculator
                     </ButtonLink>
                 </LinkWrapper>
             )}
