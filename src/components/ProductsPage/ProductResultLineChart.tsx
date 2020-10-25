@@ -7,7 +7,7 @@ export const ProductResultLineChart: React.FC<any> = ({lineChartData}) => {
     return (
         <ResponsiveLine
             data={data}
-            margin={{top: 50, right: 120, bottom: 50, left: 60}}
+            margin={{top: 50, right: 220, bottom: 70, left: 220}}
             xScale={{type: 'linear', min: 'auto', max: 'auto'}}
             yScale={{type: 'linear'}}
             curve="cardinal"
@@ -38,17 +38,17 @@ export const ProductResultLineChart: React.FC<any> = ({lineChartData}) => {
             useMesh={true}
             legends={[
                 {
-                    anchor: 'bottom-right',
-                    direction: 'column',
+                    anchor: 'bottom',
+                    direction: 'row',
                     justify: false,
-                    translateX: 100,
-                    translateY: 0,
-                    itemsSpacing: 0,
+                    translateX: 22,
+                    translateY: 55,
+                    itemsSpacing: 100,
                     itemDirection: 'left-to-right',
-                    itemWidth: 80,
+                    itemWidth: 94,
                     itemHeight: 20,
                     itemOpacity: 0.75,
-                    symbolSize: 12,
+                    symbolSize: 15,
                     symbolShape: 'circle',
                     symbolBorderColor: 'rgba(0, 0, 0, .5)',
                     effects: [

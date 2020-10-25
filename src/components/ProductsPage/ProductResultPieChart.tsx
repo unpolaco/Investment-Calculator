@@ -14,7 +14,7 @@ export const ProductResultPieChart: React.FC<any> = ({pieChartData}) => {
     return (
         <ResponsivePie
             data={data}
-            margin={{top: 40, right: 80, bottom: 80, left: 80}}
+            margin={{top: 40, right: 120, bottom: 80, left: 120}}
             innerRadius={0.25}
             padAngle={2}
             cornerRadius={3}
@@ -22,14 +22,14 @@ export const ProductResultPieChart: React.FC<any> = ({pieChartData}) => {
             borderWidth={1}
             borderColor={{from: 'color', modifiers: [['darker', 0.2]]}}
             radialLabelsSkipAngle={10}
-            radialLabelsTextXOffset={8}
+            radialLabelsTextXOffset={4}
             radialLabelsTextColor="#333333"
             radialLabelsLinkOffset={0}
-            radialLabelsLinkDiagonalLength={17}
-            radialLabelsLinkHorizontalLength={20}
+            radialLabelsLinkDiagonalLength={8}
+            radialLabelsLinkHorizontalLength={8}
             radialLabelsLinkStrokeWidth={1}
             radialLabelsLinkColor={{from: 'color'}}
-            sliceLabel={d => `${d.value} - ${d.percentQuota}% percent`}
+            sliceLabel={d => `${new Intl.NumberFormat('pl-PL', {currency: 'PLN', style: 'currency'}).format(d.value)} - ${d.percentQuota}%`}
             slicesLabelsSkipAngle={10}
             slicesLabelsTextColor="#333333"
             animate={true}
