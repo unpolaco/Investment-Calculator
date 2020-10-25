@@ -6,6 +6,7 @@ export const colors = {
     bodyBackgroundColor: '#ecf0f1',
     cardBackgroundColor: '#fff',
     textColor: '#7f8c8d',
+    textActiveColor: '#34495e',
     textLabelsColor: '#7f8c8d',
     textInvertColor: '#fff',
     loaderColor: '#34495e',

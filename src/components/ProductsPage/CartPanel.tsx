@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
-import {CartPanelContainer, EmptyCart, Button} from './CartPanel.styles';
+import {CartPanelContainer, EmptyCart, Button, EmptyCartText, TotalAmount, TextBold} from './CartPanel.styles';
 import {CartPanelProductItem} from './CartPanelIProductItem';
 import {addAmountsToSelectedProducts, calculatePercentageQuota} from './CartPanel.helpers';
 import {initialValues} from '../CalculatorPage/CalculatorForm/CalculatorForm.constants';
@@ -33,16 +33,17 @@ export const CartPanel: React.FC<any> = ({selectedProducts, handleSendProducts})
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                 {({handleSubmit, values, handleBlur}) => (
                     <Form onSubmit={handleSubmit}>
-                        <div>Your total amount is {formattedTotalAmount}</div>
+                        <TotalAmount>
+                            Your total amount is <TextBold>{formattedTotalAmount}</TextBold>
+                        </TotalAmount>
                         <EmptyCart>
                             {selectedProducts.length === 0 ? (
-                                'Click on the list on the right side to add product to the cart'
+                                <EmptyCartText>Click on the list to add product to the cart</EmptyCartText>
                             ) : (
                                 <div>
                                     <div>Enter amount on each product</div>
                                     {selectedProducts.map((product: any) => (
                                         <div key={product.id}>
-                                            <div>{product.percentQuota}</div>
                                             <CartPanelProductItem
                                                 key={product.id}
                                                 name={product.name}
@@ -50,13 +51,14 @@ export const CartPanel: React.FC<any> = ({selectedProducts, handleSendProducts})
                                                 handleBlur={handleBlur}
                                                 calculateProducts={calculateProducts}
                                                 values={values}
+                                                percentQuota={product.percentQuota}
                                             />
                                         </div>
                                     ))}
                                 </div>
                             )}
                         </EmptyCart>
-                        <Button type="submit">Save your values</Button>
+                        <Button type="submit">Submit your products</Button>
                     </Form>
                 )}
             </Formik>
