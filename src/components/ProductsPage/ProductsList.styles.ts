@@ -5,7 +5,7 @@ export const ProductsListContainer = styled.aside`
     flex-grow: 1;
     flex-direction: column;
     align-items: center;
-    height: 95%;
+    height: 100%;
     overflow: auto;
     padding: 10px;
     margin: 5px;

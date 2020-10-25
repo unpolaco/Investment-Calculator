@@ -8,7 +8,7 @@ export const FormContainer = styled.div`
 `;
 export const InputsCard = styled.aside`
     width: 25%;
-    height: 95%;
+    height: 100%;
     margin: 5px;
     padding: 10px;
     background-color: ${colors.cardBackgroundColor};
